@@ -60,9 +60,9 @@ function endDraw(event) {
 function compress(array){
     let newline = []
     for (let i =0; i < array.length; i+=6){
-        let xnew = ((array[i][0] / canvas.width) * 255).toFixed()
-        let ynew = ((array[i][1] / canvas.height) * 255).toFixed()
-        newline.push([xnew,ynew])
+        let xnew = ((array[i][0] / canvas.width) * 254).toFixed()
+        let ynew = ((array[i][1] / canvas.height) * 254).toFixed()
+        newline.push([(xnew < 255)?xnew:254,(ynew < 255)?ynew:254])
     }
     return newline
 }
@@ -93,3 +93,23 @@ function drawConstructed(array){
     ctx2.lineCap = 'round';
     ctx2.stroke();
 }
+
+function bin2String() {
+    for(i = 0;i < lines.length; i++){
+        lines[i].push("255")
+    }
+    let array2 = lines.flat(6)
+    console.log(array2)
+    let data = String.fromCharCode.apply(String, array2);
+    document.getElementById("code").innerText = data
+    return data
+}
+
+function base64ToArrayBuffer(){
+    for(i = 0;i < lines.length; i++){
+        lines[i].push(255)
+    }
+    let array2 = lines.flat()
+    let newData = Buffer.from(array2, 'base64');
+    
+ }
