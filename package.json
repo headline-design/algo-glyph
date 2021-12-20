@@ -1,8 +1,12 @@
 {
     "dependencies": {
+        "@pipeline-ui-2/pipeline": "^1.2.7",
+        "parcel": "^2.0.1",
         "serve": "^13.0.2"
     },
+    "source": "src/index.html",
     "scripts": {
-        "start": "serve -s src"
+        "start": "parcel",
+        "build": "parcel build"
     }
 }
