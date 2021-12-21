@@ -469,13 +469,11 @@ var line = [];
 let points = 0;
 var mode = false;
 var drawing = false;
-var canvas = document.getElementById("canvas1");
+var canvas1 = document.getElementById("canvas1");
 var address = "";
-canvas.addEventListener("mousedown", startDraw, false);
-canvas.addEventListener("mousemove", continueDraw, false);
-canvas.addEventListener("mouseup", endDraw, false);
-document.getElementById("preview").onclick = ()=>preview(lines)
-;
+canvas1.addEventListener("mousedown", startDraw, false);
+canvas1.addEventListener("mousemove", continueDraw, false);
+canvas1.addEventListener("mouseup", endDraw, false);
 document.getElementById("bin2String").onclick = ()=>bin2String()
 ;
 document.getElementById("algo").onclick = ()=>{
@@ -488,11 +486,12 @@ document.getElementById("send").onclick = ()=>send()
 ;
 document.getElementById("fetch").onclick = ()=>handleFetch(document.getElementById("fetchtxid").value)
 ;
-var context = canvas.getContext('2d');
+var context = canvas1.getContext('2d');
+context.lineCap = 'round';
 context.lineWidth = 8;
 function startDraw(event) {
     if (mode === true) return;
-    var pos = mouseXY(canvas, event);
+    var pos = mouseXY(canvas1, event);
     drawing = true;
     context.beginPath();
     context.moveTo(pos.x, pos.y);
@@ -504,7 +503,7 @@ function startDraw(event) {
 }
 function continueDraw(event) {
     if (drawing) {
-        var pos = mouseXY(canvas, event);
+        var pos = mouseXY(canvas1, event);
         context.lineTo(pos.x, pos.y);
         context.stroke();
         context.beginPath();
@@ -517,21 +516,21 @@ function continueDraw(event) {
 }
 function endDraw(event) {
     if (drawing) {
-        var pos = mouseXY(canvas, event);
+        var pos = mouseXY(canvas1, event);
         context.lineTo(pos.x, pos.y);
         context.stroke();
         drawing = false;
         lines.push(compress(line));
         let L = lines.length;
         points += lines[L - 1].length;
-        document.getElementById("points").innerText = "Points: " + points + " Bytes: " + points * 2;
+        document.getElementById("points").innerText = "Points: " + points + ",  Bytes: " + (points * 2 + L - 1);
     }
 }
 function compress(array) {
     let newline = [];
     for(let i = 0; i < array.length; i += 6){
-        let xnew = (array[i][0] / canvas.width * 254).toFixed();
-        let ynew = (array[i][1] / canvas.height * 254).toFixed();
+        let xnew = (array[i][0] / canvas1.width * 254).toFixed();
+        let ynew = (array[i][1] / canvas1.height * 254).toFixed();
         newline.push([
             xnew < 255 ? xnew : 254,
             ynew < 255 ? ynew : 254
@@ -549,7 +548,7 @@ function mouseXY(c, e) {
 function preview(linesb) {
     let canvas2 = document.getElementById("canvas2");
     let ctx2 = canvas2.getContext('2d');
-    ctx2.clearRect(0, 0, canvas.width, canvas.height);
+    ctx2.clearRect(0, 0, canvas1.width, canvas1.height);
     console.log(linesb);
     for(let i = 0; i < linesb.length; i++)drawConstructed(linesb[i]);
 }
@@ -567,11 +566,16 @@ function drawConstructed(array) {
     ctx2.stroke();
 }
 function bin2String() {
-    for(i = 0; i < lines.length - 1; i++)lines[i].push("255");
-    let array2 = lines.flat(6);
-    console.log(array2);
-    let data = String.fromCharCode.apply(String, array2);
-    document.getElementById("code").innerText = data;
+    preview(lines);
+    let canvas = document.getElementById("canvas1");
+    let ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for(i = 0; i < lines.length - 1; i++)lines[i].push(255);
+    lines = lines.flat(6);
+    for(i = 0; i < lines.length; i++)lines[i] = parseInt(lines[i]);
+    let data = String.fromCharCode.apply(null, lines);
+    document.getElementById("code").value = data;
+    lines = [];
     return data;
 }
 async function fetchNote(txid) {
@@ -616,7 +620,7 @@ function drawData(input) {
     preview(newlines);
 }
 function send() {
-    _pipelineDefault.default.send(document.getElementById("recipient").value, 0, document.getElementById("note").value, address, wallet, 0).then((data)=>{
+    _pipelineDefault.default.send(document.getElementById("recipient").value, 0, document.getElementById("code").value, address, wallet, 0).then((data)=>{
         console.log(data);
     });
 }
@@ -2687,9 +2691,9 @@ module.exports = {
 module.exports = require('./dist/belter'); // eslint-disable-line import/no-commonjs
 
 },{"./dist/belter":"h8r6c"}],"h8r6c":[function(require,module,exports) {
-var process = require("process");
-var Buffer = require("buffer").Buffer;
 var global1 = arguments[3];
+var Buffer = require("buffer").Buffer;
+var process = require("process");
 !function(root, factory) {
     "object" == typeof exports && "object" == typeof module ? module.exports = factory() : "function" == typeof define && define.amd ? define("belter", [], factory) : "object" == typeof exports ? exports.belter = factory() : root.belter = factory();
 }("undefined" != typeof self ? self : this, function() {
@@ -6354,7 +6358,7 @@ var global1 = arguments[3];
     ]);
 });
 
-},{"process":"1WSHx","buffer":"8iVrL"}],"1WSHx":[function(require,module,exports) {
+},{"buffer":"8iVrL","process":"1WSHx"}],"1WSHx":[function(require,module,exports) {
 // shim for using process in browser
 var process = module.exports = {
 };
@@ -21083,8 +21087,8 @@ var process = require("process");
 });
 
 },{"process":"1WSHx"}],"3lKGd":[function(require,module,exports) {
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 /*
  * [hi-base32]{@link https://github.com/emn178/hi-base32}
  *

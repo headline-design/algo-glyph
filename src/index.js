@@ -19,15 +19,13 @@ var address = ""
 canvas.addEventListener("mousedown", startDraw, false);
 canvas.addEventListener("mousemove", continueDraw, false);
 canvas.addEventListener("mouseup", endDraw, false)
-
-document.getElementById("preview").onclick = () => preview(lines)
 document.getElementById("bin2String").onclick = () => bin2String()
 document.getElementById("algo").onclick = () => {Pipeline.connect(wallet).then(data => {address = data; document.getElementById("address").innerText = address})}
 document.getElementById("send").onclick = () => send()
 document.getElementById("fetch").onclick = () => handleFetch(document.getElementById("fetchtxid").value)
 
 var context = canvas.getContext('2d')
-
+context.lineCap = 'round';
 context.lineWidth = 8;
 
 function startDraw(event) {
@@ -65,7 +63,7 @@ function endDraw(event) {
         lines.push(compress(line));
         let L = lines.length
         points += lines[L -1].length
-        document.getElementById("points").innerText = "Points: " + points + " Bytes: " + points * 2
+        document.getElementById("points").innerText = "Points: " + points + ",  Bytes: " + (points * 2 + L - 1)
     }
 }
 
@@ -109,13 +107,24 @@ function drawConstructed(array){
 }
 
 function bin2String() {
-    for(i = 0;i < lines.length - 1; i++){
-        lines[i].push("255")
+    preview(lines)
+    let canvas = document.getElementById("canvas1")
+    let ctx = canvas.getContext('2d')
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for(i = 0;i < (lines.length - 1); i++){
+        lines[i].push(255)
     }
-    let array2 = lines.flat(6)
-    console.log(array2)
-    let data = String.fromCharCode.apply(String, array2);
-    document.getElementById("code").innerText = data
+
+    lines = lines.flat(6)
+
+    for(i = 0; i < lines.length; i++){
+        lines[i] = parseInt(lines[i])
+    }
+
+    let data = String.fromCharCode.apply(null, lines);
+    document.getElementById("code").value = data
+    lines = []
     return data
 }
 
@@ -174,7 +183,7 @@ function handleFetch(noteTxID) {
  }
 
  function send(){
-    Pipeline.send(document.getElementById("recipient").value, 0, document.getElementById("note").value, address, wallet,0)
+    Pipeline.send(document.getElementById("recipient").value, 0, document.getElementById("code").value, address, wallet,0)
     .then(data => {
         console.log(data);
     });
