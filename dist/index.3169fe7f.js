@@ -140,12 +140,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"7rHbE":[function(require,module,exports) {
+})({"fCfyx":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "4a236f9275d0a351";
-module.bundle.HMR_BUNDLE_ID = "f62a8c7ba0da34c2";
+module.bundle.HMR_BUNDLE_ID = "6e8bd1d83169fe7f";
 "use strict";
 function _createForOfIteratorHelper(o, allowArrayLike) {
     var it;
@@ -458,15 +458,16 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"htEpl":[function(require,module,exports) {
+},{}],"3QONC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _pipeline = require("@pipeline-ui-2/pipeline");
 var _pipelineDefault = parcelHelpers.interopDefault(_pipeline);
+var _indexCss = require("./index.css");
 var Buffer = require("buffer").Buffer;
 const wallet = _pipelineDefault.default.init();
 var lines = [];
 var line = [];
-let points = 0;
+var points = 0;
 var mode = false;
 var drawing = false;
 var canvas1 = document.getElementById("canvas1");
@@ -492,8 +493,13 @@ document.body.addEventListener("touchend", function(e) {
         endDraw(e);
     }
 }, false);
+var compression = 3;
 document.getElementById("bin2String").onclick = ()=>bin2String()
 ;
+document.getElementById("compress").onchange = ()=>{
+    compression = parseInt(document.getElementById("compress").value);
+    console.log(compression);
+};
 document.getElementById("algo").onclick = ()=>{
     _pipelineDefault.default.connect(wallet).then((data)=>{
         address = data;
@@ -547,7 +553,7 @@ function endDraw(event) {
 }
 function compress(array) {
     let newline = [];
-    for(let i = 0; i < array.length; i += 3){
+    for(let i = 0; i < array.length; i += compression){
         let xnew = (array[i][0] / canvas1.width * 254).toFixed();
         let ynew = (array[i][1] / canvas1.height * 254).toFixed();
         newline.push([
@@ -599,6 +605,7 @@ function bin2String() {
     let data = String.fromCharCode.apply(null, lines);
     document.getElementById("code").value = data;
     lines = [];
+    points = 0;
     return data;
 }
 async function fetchNote(txid) {
@@ -648,7 +655,7 @@ function send() {
     });
 }
 
-},{"buffer":"8iVrL","@pipeline-ui-2/pipeline":"d4Yso","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"8iVrL":[function(require,module,exports) {
+},{"buffer":"fKNRf","@pipeline-ui-2/pipeline":"6XqpP","./index.css":"hYQp9","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"fKNRf":[function(require,module,exports) {
 /*!
  * The buffer module from node.js, for the browser.
  *
@@ -1877,7 +1884,7 @@ var hexSliceLookupTable = function() {
     return table;
 }();
 
-},{"base64-js":"7YkGm","ieee754":"4iMvP"}],"7YkGm":[function(require,module,exports) {
+},{"base64-js":"7zTC9","ieee754":"2vyZc"}],"7zTC9":[function(require,module,exports) {
 'use strict';
 exports.byteLength = byteLength;
 exports.toByteArray = toByteArray;
@@ -1977,7 +1984,7 @@ function fromByteArray(uint8) {
     return parts.join('');
 }
 
-},{}],"4iMvP":[function(require,module,exports) {
+},{}],"2vyZc":[function(require,module,exports) {
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */ exports.read = function(buffer, offset, isLE, mLen, nBytes) {
     var e, m;
     var eLen = nBytes * 8 - mLen - 1;
@@ -2047,7 +2054,7 @@ exports.write = function(buffer, value, offset, isLE, mLen, nBytes) {
     buffer[offset + i - d] |= s * 128;
 };
 
-},{}],"d4Yso":[function(require,module,exports) {
+},{}],"6XqpP":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _myalgoConnect = require("@randlabs/myalgo-connect");
@@ -2353,10 +2360,10 @@ Pipeline.send(address, amount, note, sendingAddress, myAlgowallet, index)
     */ 
 exports.default = Pipeline;
 
-},{"buffer":"8iVrL","@randlabs/myalgo-connect":"69CSw","@walletconnect/client":"45vRn","algorand-walletconnect-qrcode-modal":"j4jRI","@json-rpc-tools/utils":"c7Wrj","algo-msgpack-with-bigint":"jMzdH","hi-base32":"3lKGd","algo-msgpack-with-bigint/dist/CachedKeyDecoder":"hmEJq","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"69CSw":[function(require,module,exports) {
+},{"buffer":"fKNRf","@randlabs/myalgo-connect":"1Oq3g","@walletconnect/client":"41Nli","algorand-walletconnect-qrcode-modal":"cHzMh","@json-rpc-tools/utils":"7wg2n","algo-msgpack-with-bigint":"gDZwT","hi-base32":"ejJxN","algo-msgpack-with-bigint/dist/CachedKeyDecoder":"78dWT","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"1Oq3g":[function(require,module,exports) {
 module.exports = require("./lib/main");
 
-},{"./lib/main":"i8ddt"}],"i8ddt":[function(require,module,exports) {
+},{"./lib/main":"7YVFT"}],"7YVFT":[function(require,module,exports) {
 var Buffer = require("buffer").Buffer;
 const { openPopup  } = require("./popup/popup");
 const { sleep , prepareTxn  } = require("./utils/utils");
@@ -2692,7 +2699,7 @@ const bridge = new Messaging();
 }
 module.exports = MyAlgoConnect;
 
-},{"buffer":"8iVrL","./popup/popup":"6yPGd","./utils/utils":"3Zkn4","./utils/errors":"7V7Ax","./messaging/Messaging":"8rykV"}],"6yPGd":[function(require,module,exports) {
+},{"buffer":"fKNRf","./popup/popup":"4BkXk","./utils/utils":"eWyIH","./utils/errors":"hfmwr","./messaging/Messaging":"dNHfo"}],"4BkXk":[function(require,module,exports) {
 const dom = require("belter");
 const defaultOptions = {
     width: 400,
@@ -2709,13 +2716,13 @@ module.exports = {
     openPopup
 };
 
-},{"belter":"Ek6xE"}],"Ek6xE":[function(require,module,exports) {
+},{"belter":"gl0Z2"}],"gl0Z2":[function(require,module,exports) {
 /* @flow */ // $FlowFixMe
 module.exports = require('./dist/belter'); // eslint-disable-line import/no-commonjs
 
-},{"./dist/belter":"h8r6c"}],"h8r6c":[function(require,module,exports) {
-var global1 = arguments[3];
+},{"./dist/belter":"1Mt5y"}],"1Mt5y":[function(require,module,exports) {
 var Buffer = require("buffer").Buffer;
+var global1 = arguments[3];
 var process = require("process");
 !function(root, factory) {
     "object" == typeof exports && "object" == typeof module ? module.exports = factory() : "function" == typeof define && define.amd ? define("belter", [], factory) : "object" == typeof exports ? exports.belter = factory() : root.belter = factory();
@@ -6381,7 +6388,7 @@ var process = require("process");
     ]);
 });
 
-},{"buffer":"8iVrL","process":"1WSHx"}],"1WSHx":[function(require,module,exports) {
+},{"buffer":"fKNRf","process":"7Gxwq"}],"7Gxwq":[function(require,module,exports) {
 // shim for using process in browser
 var process = module.exports = {
 };
@@ -6530,7 +6537,7 @@ process.umask = function() {
     return 0;
 };
 
-},{}],"3Zkn4":[function(require,module,exports) {
+},{}],"eWyIH":[function(require,module,exports) {
 var Buffer = require("buffer").Buffer;
 function sleep(msec = 200) {
     return new Promise((resolve)=>setTimeout(resolve, msec)
@@ -6565,14 +6572,14 @@ module.exports = {
     prepareTxn
 };
 
-},{"buffer":"8iVrL"}],"7V7Ax":[function(require,module,exports) {
+},{"buffer":"fKNRf"}],"hfmwr":[function(require,module,exports) {
 const Errors = {
     WINDOW_NOT_LOADED: "Window not loaded",
     WINDOW_IS_OPENED: "Windows is opened"
 };
 module.exports = Errors;
 
-},{}],"8rykV":[function(require,module,exports) {
+},{}],"dNHfo":[function(require,module,exports) {
 const Messenger = require("@randlabs/communication-bridge");
 const WALLET_BRIDGE_CHANNEL_NAME = "wallet-bridge-communication-channel";
 class Messaging {
@@ -6646,10 +6653,10 @@ class Messaging {
 }
 module.exports = Messaging;
 
-},{"@randlabs/communication-bridge":"4T9Sa"}],"4T9Sa":[function(require,module,exports) {
+},{"@randlabs/communication-bridge":"lPnX4"}],"lPnX4":[function(require,module,exports) {
 module.exports = require("./lib/messenger");
 
-},{"./lib/messenger":"80mYk"}],"80mYk":[function(require,module,exports) {
+},{"./lib/messenger":"62KEZ"}],"62KEZ":[function(require,module,exports) {
 class Messenger {
     /**
 	 * @callback onMessage
@@ -6796,7 +6803,7 @@ class Messenger {
 }
 module.exports = Messenger;
 
-},{}],"45vRn":[function(require,module,exports) {
+},{}],"41Nli":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _core = require("@walletconnect/core");
@@ -6813,7 +6820,7 @@ class WalletConnect extends _coreDefault.default {
 }
 exports.default = WalletConnect;
 
-},{"@walletconnect/core":"8BHJw","@walletconnect/iso-crypto":"2TzeP","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"8BHJw":[function(require,module,exports) {
+},{"@walletconnect/core":"abMGv","@walletconnect/iso-crypto":"9VQdo","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"abMGv":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utils = require("@walletconnect/utils");
@@ -7653,7 +7660,7 @@ class Connector {
 }
 exports.default = Connector;
 
-},{"@walletconnect/utils":"fMxrC","@walletconnect/socket-transport":"aznR2","./errors":"hluLe","./events":"9pPrk","./storage":"jZgdg","./url":"4RlPV","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"fMxrC":[function(require,module,exports) {
+},{"@walletconnect/utils":"ee1Uf","@walletconnect/socket-transport":"605YQ","./errors":"8YUyZ","./events":"gLKL2","./storage":"6kgA6","./url":"5NoHn","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"ee1Uf":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _browserUtils = require("@walletconnect/browser-utils");
@@ -7675,7 +7682,7 @@ parcelHelpers.exportAll(_url, exports);
 var _validators = require("./validators");
 parcelHelpers.exportAll(_validators, exports);
 
-},{"@walletconnect/browser-utils":"6C6gV","./constants":"2Phe1","./encoding":"gk54y","./ethereum":"iHhN3","./misc":"aZ61Y","./payload":"he6PS","./session":"lW0p6","./url":"dTvt8","./validators":"5SccW","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"6C6gV":[function(require,module,exports) {
+},{"@walletconnect/browser-utils":"89mVu","./constants":"bWsMz","./encoding":"448ig","./ethereum":"fFUWH","./misc":"lgJxV","./payload":"4nOpo","./session":"gEUOk","./url":"4FKm0","./validators":"55IUD","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"89mVu":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _browser = require("./browser");
@@ -7689,7 +7696,7 @@ parcelHelpers.exportAll(_mobile, exports);
 var _registry = require("./registry");
 parcelHelpers.exportAll(_registry, exports);
 
-},{"./browser":"672ka","./json":"eroZD","./local":"lpIyr","./mobile":"ldU4S","./registry":"kGt4A","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"672ka":[function(require,module,exports) {
+},{"./browser":"6Vigs","./json":"aauJD","./local":"4ME9m","./mobile":"cJB9L","./registry":"fpSVK","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"6Vigs":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "detectEnv", ()=>detectEnv
@@ -7779,7 +7786,7 @@ function getClientMeta() {
     return _windowMetadata.getWindowMetadata();
 }
 
-},{"@walletconnect/window-metadata":"g4v2d","@walletconnect/window-getters":"15ptb","detect-browser":"2Xqjd","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"g4v2d":[function(require,module,exports) {
+},{"@walletconnect/window-metadata":"f8rEP","@walletconnect/window-getters":"cAB18","detect-browser":"7ZtIj","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"f8rEP":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -7868,7 +7875,7 @@ function getWindowMetadata() {
 }
 exports.getWindowMetadata = getWindowMetadata;
 
-},{"@walletconnect/window-getters":"15ptb"}],"15ptb":[function(require,module,exports) {
+},{"@walletconnect/window-getters":"cAB18"}],"cAB18":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -7927,7 +7934,7 @@ function getLocalStorage() {
 }
 exports.getLocalStorage = getLocalStorage;
 
-},{}],"2Xqjd":[function(require,module,exports) {
+},{}],"7ZtIj":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "BrowserInfo", ()=>BrowserInfo1
@@ -8293,7 +8300,7 @@ function createVersionParts(count) {
     return output;
 }
 
-},{"process":"1WSHx","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"iPXTn":[function(require,module,exports) {
+},{"process":"7Gxwq","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"emMtT":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -8323,7 +8330,7 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"eroZD":[function(require,module,exports) {
+},{}],"aauJD":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "safeJsonParse", ()=>safeJsonParse
@@ -8334,7 +8341,7 @@ var _safeJson = require("@walletconnect/safe-json");
 const safeJsonParse = _safeJson.safeJsonParse;
 const safeJsonStringify = _safeJson.safeJsonStringify;
 
-},{"@walletconnect/safe-json":"hVzgx","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"hVzgx":[function(require,module,exports) {
+},{"@walletconnect/safe-json":"2jgu9","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"2jgu9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "safeJsonParse", ()=>safeJsonParse
@@ -8353,7 +8360,7 @@ function safeJsonStringify(value) {
     return typeof value === "string" ? value : JSON.stringify(value);
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"lpIyr":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"4ME9m":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "setLocal", ()=>setLocal
@@ -8382,7 +8389,7 @@ function removeLocal(key) {
     if (local) local.removeItem(key);
 }
 
-},{"./json":"eroZD","./browser":"672ka","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"ldU4S":[function(require,module,exports) {
+},{"./json":"aauJD","./browser":"6Vigs","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"cJB9L":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "mobileLinkChoiceKey", ()=>mobileLinkChoiceKey
@@ -8419,7 +8426,7 @@ function getMobileLinkRegistry(registry, whitelist) {
     return links;
 }
 
-},{"./local":"lpIyr","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"kGt4A":[function(require,module,exports) {
+},{"./local":"4ME9m","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"fpSVK":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getWalletRegistryUrl", ()=>getWalletRegistryUrl
@@ -8458,7 +8465,7 @@ function formatMobileRegistry(registry, platform = "mobile") {
     );
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"2Phe1":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"bWsMz":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "reservedEvents", ()=>reservedEvents
@@ -8505,7 +8512,7 @@ const infuraNetworks = {
     42: "kovan"
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"gk54y":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"448ig":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "convertArrayBufferToBuffer", ()=>convertArrayBufferToBuffer
@@ -8624,7 +8631,7 @@ function convertNumberToHex(num, noPrefix) {
     return noPrefix ? hex : _encoding.addHexPrefix(hex);
 }
 
-},{"bn.js":"lXq6B","@walletconnect/encoding":"grCai","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"lXq6B":[function(require,module,exports) {
+},{"bn.js":"jp2w2","@walletconnect/encoding":"9jcU4","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"jp2w2":[function(require,module,exports) {
 (function(module, exports) {
     // Utils
     function assert(val, msg) {
@@ -11309,10 +11316,10 @@ function convertNumberToHex(num, noPrefix) {
     };
 })(typeof module === 'undefined' || module, this);
 
-},{"buffer":"iPcOw"}],"iPcOw":[function(require,module,exports) {
+},{"buffer":"2NQRt"}],"2NQRt":[function(require,module,exports) {
 "use strict";
 
-},{}],"grCai":[function(require,module,exports) {
+},{}],"9jcU4":[function(require,module,exports) {
 var Buffer = require("buffer").Buffer;
 "use strict";
 var __importDefault = this && this.__importDefault || function(mod) {
@@ -11595,7 +11602,7 @@ function padString(str, length, left, padding = STRING_ZERO) {
     return result;
 }
 
-},{"buffer":"8iVrL","is-typedarray":"aWKu1","typedarray-to-buffer":"5rH1c"}],"aWKu1":[function(require,module,exports) {
+},{"buffer":"fKNRf","is-typedarray":"jrepF","typedarray-to-buffer":"gsdYb"}],"jrepF":[function(require,module,exports) {
 module.exports = isTypedArray;
 isTypedArray.strict = isStrictTypedArray;
 isTypedArray.loose = isLooseTypedArray;
@@ -11621,7 +11628,7 @@ function isLooseTypedArray(arr) {
     return names[toString.call(arr)];
 }
 
-},{}],"5rH1c":[function(require,module,exports) {
+},{}],"gsdYb":[function(require,module,exports) {
 var Buffer = require("buffer").Buffer;
 /**
  * Convert a typed array to a Buffer without a copy
@@ -11642,7 +11649,7 @@ module.exports = function typedarrayToBuffer(arr) {
     return Buffer.from(arr);
 };
 
-},{"buffer":"8iVrL","is-typedarray":"aWKu1"}],"iHhN3":[function(require,module,exports) {
+},{"buffer":"fKNRf","is-typedarray":"jrepF"}],"fFUWH":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "toChecksumAddress", ()=>toChecksumAddress
@@ -11710,9 +11717,9 @@ function parseTransactionData(txData) {
     return txDataRPC;
 }
 
-},{"js-sha3":"1ggkx","@walletconnect/encoding":"grCai","./encoding":"gk54y","./misc":"aZ61Y","./validators":"5SccW","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"1ggkx":[function(require,module,exports) {
-var global = arguments[3];
+},{"js-sha3":"lSiEn","@walletconnect/encoding":"9jcU4","./encoding":"448ig","./misc":"lgJxV","./validators":"55IUD","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"lSiEn":[function(require,module,exports) {
 var process = require("process");
+var global = arguments[3];
 /**
  * [js-sha3]{@link https://github.com/emn178/js-sha3}
  *
@@ -12360,7 +12367,7 @@ var process = require("process");
     }
 })();
 
-},{"process":"1WSHx"}],"aZ61Y":[function(require,module,exports) {
+},{"process":"7Gxwq"}],"lgJxV":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "sanitizeHex", ()=>sanitizeHex
@@ -12421,7 +12428,7 @@ function getRpcUrl(chainId, rpc) {
     return rpcUrl;
 }
 
-},{"@walletconnect/encoding":"grCai","@walletconnect/jsonrpc-utils":"aWCl7","./constants":"2Phe1","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"aWCl7":[function(require,module,exports) {
+},{"@walletconnect/encoding":"9jcU4","@walletconnect/jsonrpc-utils":"5Y4jJ","./constants":"bWsMz","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"5Y4jJ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _constants = require("./constants");
@@ -12441,7 +12448,7 @@ parcelHelpers.exportAll(_url, exports);
 var _validators = require("./validators");
 parcelHelpers.exportAll(_validators, exports);
 
-},{"./constants":"aO3KX","./error":"dpnc7","./env":"3IOgd","./format":"94wUr","./routing":"6RgI5","./types":"5uVUC","./url":"6xWjd","./validators":"5EJI5","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"aO3KX":[function(require,module,exports) {
+},{"./constants":"iTwCE","./error":"bbcxT","./env":"irgY7","./format":"kNdyL","./routing":"4v6Cp","./types":"cKQ3Y","./url":"eqEPm","./validators":"d4wTQ","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"iTwCE":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "PARSE_ERROR", ()=>PARSE_ERROR
@@ -12506,7 +12513,7 @@ const STANDARD_ERROR_MAP = {
     }
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"dpnc7":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"bbcxT":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "isServerErrorCode", ()=>isServerErrorCode
@@ -12571,7 +12578,7 @@ function parseConnectionError(e, url, type) {
     return e.message.includes("getaddrinfo ENOTFOUND") || e.message.includes("connect ECONNREFUSED") ? new Error(`Unavailable ${type} RPC url at ${url}`) : e;
 }
 
-},{"./constants":"aO3KX","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"3IOgd":[function(require,module,exports) {
+},{"./constants":"iTwCE","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"irgY7":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "isNodeJs", ()=>isNodeJs
@@ -12580,7 +12587,7 @@ var _environment = require("@walletconnect/environment");
 parcelHelpers.exportAll(_environment, exports);
 const isNodeJs = _environment.isNode;
 
-},{"@walletconnect/environment":"h6DZX","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"h6DZX":[function(require,module,exports) {
+},{"@walletconnect/environment":"8oN9O","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"8oN9O":[function(require,module,exports) {
 "use strict";
 var __createBinding = this && this.__createBinding || (Object.create ? function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -12603,7 +12610,7 @@ Object.defineProperty(exports, "__esModule", {
 __exportStar(require("./crypto"), exports);
 __exportStar(require("./env"), exports);
 
-},{"./crypto":"2LceE","./env":"j0oaH"}],"2LceE":[function(require,module,exports) {
+},{"./crypto":"6XF54","./env":"e3gX1"}],"6XF54":[function(require,module,exports) {
 var global = arguments[3];
 "use strict";
 Object.defineProperty(exports, "__esModule", {
@@ -12625,7 +12632,7 @@ function isBrowserCryptoAvailable() {
 }
 exports.isBrowserCryptoAvailable = isBrowserCryptoAvailable;
 
-},{}],"j0oaH":[function(require,module,exports) {
+},{}],"e3gX1":[function(require,module,exports) {
 var process = require("process");
 "use strict";
 Object.defineProperty(exports, "__esModule", {
@@ -12645,7 +12652,7 @@ function isBrowser() {
 }
 exports.isBrowser = isBrowser;
 
-},{"process":"1WSHx"}],"94wUr":[function(require,module,exports) {
+},{"process":"7Gxwq"}],"kNdyL":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "payloadId", ()=>payloadId
@@ -12697,7 +12704,7 @@ function formatErrorMessage(error) {
     return error;
 }
 
-},{"./error":"dpnc7","./constants":"aO3KX","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"6RgI5":[function(require,module,exports) {
+},{"./error":"bbcxT","./constants":"iTwCE","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"4v6Cp":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "isValidRoute", ()=>isValidRoute
@@ -12733,13 +12740,13 @@ function isValidTrailingWildcardRoute(route) {
     return !isValidDefaultRoute(route) && isValidWildcardRoute(route) && !route.split("*")[1].trim();
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"5uVUC":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"cKQ3Y":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsonrpcTypes = require("@walletconnect/jsonrpc-types");
 parcelHelpers.exportAll(_jsonrpcTypes, exports);
 
-},{"@walletconnect/jsonrpc-types":"FPchv","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"FPchv":[function(require,module,exports) {
+},{"@walletconnect/jsonrpc-types":"bQxVa","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"bQxVa":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsonrpc = require("./jsonrpc");
@@ -12751,9 +12758,9 @@ parcelHelpers.exportAll(_provider, exports);
 var _validator = require("./validator");
 parcelHelpers.exportAll(_validator, exports);
 
-},{"./jsonrpc":"eDwBP","./misc":"aMiTY","./provider":"k0U1a","./validator":"75Rv3","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"eDwBP":[function(require,module,exports) {
+},{"./jsonrpc":"difdO","./misc":"3iVNZ","./provider":"j0Krz","./validator":"3YiNA","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"difdO":[function(require,module,exports) {
 
-},{}],"aMiTY":[function(require,module,exports) {
+},{}],"3iVNZ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "IEvents", ()=>IEvents
@@ -12761,7 +12768,7 @@ parcelHelpers.export(exports, "IEvents", ()=>IEvents
 class IEvents {
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"k0U1a":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"j0Krz":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "IJsonRpcConnection", ()=>IJsonRpcConnection
@@ -12787,9 +12794,9 @@ class IJsonRpcProvider extends IBaseJsonRpcProvider {
     }
 }
 
-},{"./misc":"aMiTY","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"75Rv3":[function(require,module,exports) {
+},{"./misc":"3iVNZ","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"3YiNA":[function(require,module,exports) {
 
-},{}],"6xWjd":[function(require,module,exports) {
+},{}],"eqEPm":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "isHttpUrl", ()=>isHttpUrl
@@ -12820,7 +12827,7 @@ function isLocalhostUrl(url) {
     return new RegExp("wss?://localhost(:d{2,5})?").test(url);
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"5EJI5":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"d4wTQ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "isJsonRpcPayload", ()=>isJsonRpcPayload
@@ -12854,7 +12861,7 @@ function isJsonRpcValidationInvalid(validation) {
     return "error" in validation && validation.valid === false;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"5SccW":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"55IUD":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "isEmptyString", ()=>isEmptyString
@@ -12937,7 +12944,7 @@ function isSilentPayload(request) {
     return true;
 }
 
-},{"@walletconnect/encoding":"grCai","./constants":"2Phe1","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"he6PS":[function(require,module,exports) {
+},{"@walletconnect/encoding":"9jcU4","./constants":"bWsMz","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"4nOpo":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "promisify", ()=>promisify
@@ -12989,7 +12996,7 @@ function formatRpcError(error) {
     return result;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"lW0p6":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"gEUOk":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "isWalletConnectSession", ()=>isWalletConnectSession
@@ -13031,7 +13038,7 @@ function parseWalletConnectUri(str) {
     return result1;
 }
 
-},{"./url":"dTvt8","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"dTvt8":[function(require,module,exports) {
+},{"./url":"4FKm0","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"4FKm0":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getQueryString", ()=>getQueryString
@@ -13062,7 +13069,7 @@ function formatQueryString(queryParams) {
     return _queryString.stringify(queryParams);
 }
 
-},{"query-string":"OeahE","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"OeahE":[function(require,module,exports) {
+},{"query-string":"kDnsz","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"kDnsz":[function(require,module,exports) {
 'use strict';
 const strictUriEncode = require('strict-uri-encode');
 const decodeComponent = require('decode-uri-component');
@@ -13342,13 +13349,13 @@ exports.stringifyUrl = (input, options)=>{
     return `${url}${queryString}${hash}`;
 };
 
-},{"strict-uri-encode":"2Eugn","decode-uri-component":"iNCUR","split-on-first":"jlVIH"}],"2Eugn":[function(require,module,exports) {
+},{"strict-uri-encode":"dfX9C","decode-uri-component":"496b7","split-on-first":"5n1qn"}],"dfX9C":[function(require,module,exports) {
 'use strict';
 module.exports = (str)=>encodeURIComponent(str).replace(/[!'()*]/g, (x)=>`%${x.charCodeAt(0).toString(16).toUpperCase()}`
     )
 ;
 
-},{}],"iNCUR":[function(require,module,exports) {
+},{}],"496b7":[function(require,module,exports) {
 'use strict';
 var token = '%[a-f0-9]{2}';
 var singleMatcher = new RegExp(token, 'gi');
@@ -13418,7 +13425,7 @@ module.exports = function(encodedURI) {
     }
 };
 
-},{}],"jlVIH":[function(require,module,exports) {
+},{}],"5n1qn":[function(require,module,exports) {
 'use strict';
 module.exports = (string, separator)=>{
     if (!(typeof string === 'string' && typeof separator === 'string')) throw new TypeError('Expected the arguments to be of type `string`');
@@ -13435,7 +13442,7 @@ module.exports = (string, separator)=>{
     ];
 };
 
-},{}],"aznR2":[function(require,module,exports) {
+},{}],"605YQ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utils = require("@walletconnect/utils");
@@ -13622,7 +13629,7 @@ function getWebSocketUrl(_url, protocol, version) {
 }
 exports.default = SocketTransport;
 
-},{"@walletconnect/utils":"fMxrC","./network":"dXRJw","ws":"k69Sg","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"dXRJw":[function(require,module,exports) {
+},{"@walletconnect/utils":"ee1Uf","./network":"evXhQ","ws":"6rD52","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"evXhQ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class NetworkMonitor {
@@ -13652,13 +13659,13 @@ class NetworkMonitor {
 }
 exports.default = NetworkMonitor;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"k69Sg":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"6rD52":[function(require,module,exports) {
 'use strict';
 module.exports = function() {
     throw new Error("ws does not work in the browser. Browser clients must use the native WebSocket object");
 };
 
-},{}],"hluLe":[function(require,module,exports) {
+},{}],"8YUyZ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ERROR_SESSION_CONNECTED", ()=>ERROR_SESSION_CONNECTED
@@ -13701,7 +13708,7 @@ const ERROR_INVALID_URI = "URI format is invalid";
 const ERROR_QRCODE_MODAL_NOT_PROVIDED = "QRCode Modal not provided";
 const ERROR_QRCODE_MODAL_USER_CLOSED = "User close QRCode Modal";
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"9pPrk":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"gLKL2":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utils = require("@walletconnect/utils");
@@ -13737,7 +13744,7 @@ class EventManager {
 }
 exports.default = EventManager;
 
-},{"@walletconnect/utils":"fMxrC","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"jZgdg":[function(require,module,exports) {
+},{"@walletconnect/utils":"ee1Uf","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"6kgA6":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _utils = require("@walletconnect/utils");
@@ -13761,7 +13768,7 @@ class SessionStorage {
 }
 exports.default = SessionStorage;
 
-},{"@walletconnect/utils":"fMxrC","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"4RlPV":[function(require,module,exports) {
+},{"@walletconnect/utils":"ee1Uf","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"5NoHn":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "extractHostname", ()=>extractHostname
@@ -13803,7 +13810,7 @@ function getBridgeUrl(url) {
     return url;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"2TzeP":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"9VQdo":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "generateKey", ()=>generateKey
@@ -13870,7 +13877,7 @@ async function decrypt(payload, key) {
     return data;
 }
 
-},{"@walletconnect/crypto":"8f7xc","@walletconnect/encoding":"grCai","@walletconnect/utils":"fMxrC","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"8f7xc":[function(require,module,exports) {
+},{"@walletconnect/crypto":"lFAWF","@walletconnect/encoding":"9jcU4","@walletconnect/utils":"ee1Uf","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"lFAWF":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _randombytes = require("@walletconnect/randombytes");
@@ -13886,7 +13893,7 @@ parcelHelpers.exportAll(_helpers, exports);
 var _constants = require("../constants");
 parcelHelpers.exportAll(_constants, exports);
 
-},{"@walletconnect/randombytes":"glmrC","./aes":"6hHbs","./hmac":"gbxlU","./sha2":"bWHRU","../helpers":"h6xyn","../constants":"4Ksb9","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"glmrC":[function(require,module,exports) {
+},{"@walletconnect/randombytes":"8dBAV","./aes":"hlazY","./hmac":"l3MFf","./sha2":"9mSNP","../helpers":"fX5x1","../constants":"elu1m","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"8dBAV":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "randomBytes", ()=>randomBytes
@@ -13897,7 +13904,7 @@ function randomBytes(length) {
     return browserCrypto.getRandomValues(new Uint8Array(length));
 }
 
-},{"@walletconnect/environment":"h6DZX","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"6hHbs":[function(require,module,exports) {
+},{"@walletconnect/environment":"8oN9O","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"hlazY":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "aesCbcEncrypt", ()=>aesCbcEncrypt
@@ -13912,7 +13919,7 @@ function aesCbcDecrypt(iv, key, data) {
     return _browser.browserAesDecrypt(iv, key, data);
 }
 
-},{"../lib/browser":"kn4nx","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"kn4nx":[function(require,module,exports) {
+},{"../lib/browser":"kEAKc","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"kEAKc":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getAlgo", ()=>getAlgo
@@ -14015,7 +14022,7 @@ async function browserSha512(data) {
     return new Uint8Array(result);
 }
 
-},{"@walletconnect/environment":"h6DZX","../constants":"4Ksb9","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"4Ksb9":[function(require,module,exports) {
+},{"@walletconnect/environment":"8oN9O","../constants":"elu1m","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"elu1m":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _default = require("./default");
@@ -14029,7 +14036,7 @@ parcelHelpers.exportAll(_length, exports);
 var _operations = require("./operations");
 parcelHelpers.exportAll(_operations, exports);
 
-},{"./default":"lRMZJ","./encoding":"kaGZw","./error":"44ATF","./length":"1jahY","./operations":"3UKqz","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"lRMZJ":[function(require,module,exports) {
+},{"./default":"ggZJa","./encoding":"l2Hwx","./error":"7ZixA","./length":"XaZFl","./operations":"hjGvu","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"ggZJa":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "AES_LENGTH", ()=>AES_LENGTH
@@ -14082,7 +14089,7 @@ const KEY_LENGTH = _length.LENGTH_32;
 const IV_LENGTH = _length.LENGTH_16;
 const MAC_LENGTH = _length.LENGTH_32;
 
-},{"./length":"1jahY","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"1jahY":[function(require,module,exports) {
+},{"./length":"XaZFl","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"XaZFl":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "LENGTH_0", ()=>LENGTH_0
@@ -14113,7 +14120,7 @@ const LENGTH_256 = 256;
 const LENGTH_512 = 512;
 const LENGTH_1024 = 1024;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"kaGZw":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"l2Hwx":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "HEX_ENC", ()=>HEX_ENC
@@ -14123,14 +14130,14 @@ parcelHelpers.export(exports, "UTF8_ENC", ()=>UTF8_ENC
 const HEX_ENC = "hex";
 const UTF8_ENC = "utf8";
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"44ATF":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"7ZixA":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ERROR_BAD_MAC", ()=>ERROR_BAD_MAC
 );
 const ERROR_BAD_MAC = "Bad MAC";
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"3UKqz":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"hjGvu":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ENCRYPT_OP", ()=>ENCRYPT_OP
@@ -14146,7 +14153,7 @@ const DECRYPT_OP = "decrypt";
 const SIGN_OP = "sign";
 const VERIFY_OP = "verify";
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"gbxlU":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"l3MFf":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "hmacSha256Sign", ()=>hmacSha256Sign
@@ -14178,7 +14185,7 @@ async function hmacSha512Verify(key, msg, sig) {
     return result;
 }
 
-},{"../lib/browser":"kn4nx","../helpers":"h6xyn","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"h6xyn":[function(require,module,exports) {
+},{"../lib/browser":"kEAKc","../helpers":"fX5x1","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"fX5x1":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _env = require("./env");
@@ -14190,13 +14197,13 @@ parcelHelpers.exportAll(_types, exports);
 var _validators = require("./validators");
 parcelHelpers.exportAll(_validators, exports);
 
-},{"./env":"6TW1Y","./pkcs7":"iLj4c","./types":"9BrIK","./validators":"gEFbn","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"6TW1Y":[function(require,module,exports) {
+},{"./env":"a7tZ4","./pkcs7":"al0EE","./types":"lKmx9","./validators":"bFLXa","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"a7tZ4":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _environment = require("@walletconnect/environment");
 parcelHelpers.exportAll(_environment, exports);
 
-},{"@walletconnect/environment":"h6DZX","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"iLj4c":[function(require,module,exports) {
+},{"@walletconnect/environment":"8oN9O","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"al0EE":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "pkcs7", ()=>pkcs7
@@ -14384,9 +14391,9 @@ const pkcs7 = {
     }
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"9BrIK":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"lKmx9":[function(require,module,exports) {
 
-},{}],"gEFbn":[function(require,module,exports) {
+},{}],"bFLXa":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "assert", ()=>assert
@@ -14403,7 +14410,7 @@ function isConstantTime(arr1, arr2) {
     return res === 0;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"bWHRU":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"9mSNP":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "sha256", ()=>sha256
@@ -14425,7 +14432,7 @@ async function ripemd160(msg) {
     throw new Error("Not supported for Browser async methods, use sync instead!");
 }
 
-},{"../lib/browser":"kn4nx","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"j4jRI":[function(require,module,exports) {
+},{"../lib/browser":"kEAKc","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"cHzMh":[function(require,module,exports) {
 var process = require("process");
 function _interopDefault(ex) {
     return ex && typeof ex === 'object' && 'default' in ex ? ex['default'] : ex;
@@ -14966,7 +14973,7 @@ var index1 = {
 };
 module.exports = index1;
 
-},{"process":"1WSHx","@walletconnect/browser-utils":"6C6gV","qrcode":"3oop4","copy-to-clipboard":"6ec77","preact/compat":"iHK1n"}],"3oop4":[function(require,module,exports) {
+},{"process":"7Gxwq","@walletconnect/browser-utils":"89mVu","qrcode":"jdC6I","copy-to-clipboard":"7YpCX","preact/compat":"4tMH8"}],"jdC6I":[function(require,module,exports) {
 var canPromise = require('./can-promise');
 var QRCode = require('./core/qrcode');
 var CanvasRenderer = require('./renderer/canvas');
@@ -15027,7 +15034,7 @@ exports.toString = renderCanvas.bind(null, function(data, _, opts) {
     return SvgRenderer.render(data, opts);
 });
 
-},{"./can-promise":"iagK4","./core/qrcode":"9tO2W","./renderer/canvas":"2VHfR","./renderer/svg-tag.js":"8noPI"}],"iagK4":[function(require,module,exports) {
+},{"./can-promise":"5SdlR","./core/qrcode":"9QpoO","./renderer/canvas":"8WFzR","./renderer/svg-tag.js":"4B3mc"}],"5SdlR":[function(require,module,exports) {
 // can-promise has a crash in some versions of react native that dont have
 // standard global objects
 // https://github.com/soldair/node-qrcode/issues/157
@@ -15035,7 +15042,7 @@ module.exports = function() {
     return typeof Promise === 'function' && Promise.prototype && Promise.prototype.then;
 };
 
-},{}],"9tO2W":[function(require,module,exports) {
+},{}],"9QpoO":[function(require,module,exports) {
 var BufferUtil = require('../utils/buffer');
 var Utils = require('./utils');
 var ECLevel = require('./error-correction-level');
@@ -15386,7 +15393,7 @@ var isArray = require('isarray');
     return createSymbol(data, version, errorCorrectionLevel, mask);
 };
 
-},{"../utils/buffer":"6dOfr","./utils":"lmGe2","./error-correction-level":"88PX9","./bit-buffer":"f3zLR","./bit-matrix":"mrf6T","./alignment-pattern":"i8zTz","./finder-pattern":"iXM3S","./mask-pattern":"3GjwB","./error-correction-code":"a031V","./reed-solomon-encoder":"6w3fK","./version":"jKMLj","./format-info":"lDKJ9","./mode":"1H9ZH","./segments":"bLMoL","isarray":"3nzcH"}],"6dOfr":[function(require,module,exports) {
+},{"../utils/buffer":"gNyNa","./utils":"7km2q","./error-correction-level":"guzO9","./bit-buffer":"cxWCL","./bit-matrix":"7kaei","./alignment-pattern":"kKWzh","./finder-pattern":"eR99H","./mask-pattern":"e1ZZS","./error-correction-code":"9Lt3V","./reed-solomon-encoder":"0fO5K","./version":"7PrpE","./format-info":"eNoyc","./mode":"fgu6Z","./segments":"8p6g8","isarray":"2fXUM"}],"gNyNa":[function(require,module,exports) {
 /**
  * Implementation of a subset of node.js Buffer methods for the browser.
  * Based on https://github.com/feross/buffer
@@ -15708,14 +15715,14 @@ module.exports.from = function(data) {
     return new Buffer(data);
 };
 
-},{"isarray":"3nzcH"}],"3nzcH":[function(require,module,exports) {
+},{"isarray":"2fXUM"}],"2fXUM":[function(require,module,exports) {
 var toString = {
 }.toString;
 module.exports = Array.isArray || function(arr) {
     return toString.call(arr) == '[object Array]';
 };
 
-},{}],"lmGe2":[function(require,module,exports) {
+},{}],"7km2q":[function(require,module,exports) {
 var toSJISFunction;
 var CODEWORDS_COUNT = [
     0,
@@ -15802,7 +15809,7 @@ exports.toSJIS = function toSJIS(kanji) {
     return toSJISFunction(kanji);
 };
 
-},{}],"88PX9":[function(require,module,exports) {
+},{}],"guzO9":[function(require,module,exports) {
 exports.L = {
     bit: 1
 };
@@ -15847,7 +15854,7 @@ exports.from = function from(value, defaultValue) {
     }
 };
 
-},{}],"f3zLR":[function(require,module,exports) {
+},{}],"cxWCL":[function(require,module,exports) {
 function BitBuffer() {
     this.buffer = [];
     this.length = 0;
@@ -15872,7 +15879,7 @@ BitBuffer.prototype = {
 };
 module.exports = BitBuffer;
 
-},{}],"mrf6T":[function(require,module,exports) {
+},{}],"7kaei":[function(require,module,exports) {
 var BufferUtil = require('../utils/buffer');
 /**
  * Helper class to handle QR Code symbol modules
@@ -15927,7 +15934,7 @@ var BufferUtil = require('../utils/buffer');
 };
 module.exports = BitMatrix;
 
-},{"../utils/buffer":"6dOfr"}],"i8zTz":[function(require,module,exports) {
+},{"../utils/buffer":"gNyNa"}],"kKWzh":[function(require,module,exports) {
 /**
  * Alignment pattern are fixed reference pattern in defined positions
  * in a matrix symbology, which enables the decode software to re-synchronise
@@ -15998,7 +16005,7 @@ module.exports = BitMatrix;
     return coords;
 };
 
-},{"./utils":"lmGe2"}],"iXM3S":[function(require,module,exports) {
+},{"./utils":"7km2q"}],"eR99H":[function(require,module,exports) {
 var getSymbolSize = require('./utils').getSymbolSize;
 var FINDER_PATTERN_SIZE = 7;
 /**
@@ -16028,7 +16035,7 @@ var FINDER_PATTERN_SIZE = 7;
     ];
 };
 
-},{"./utils":"lmGe2"}],"3GjwB":[function(require,module,exports) {
+},{"./utils":"7km2q"}],"e1ZZS":[function(require,module,exports) {
 /**
  * Data mask pattern reference
  * @type {Object}
@@ -16218,7 +16225,7 @@ var FINDER_PATTERN_SIZE = 7;
     return bestPattern;
 };
 
-},{}],"a031V":[function(require,module,exports) {
+},{}],"9Lt3V":[function(require,module,exports) {
 var ECLevel = require('./error-correction-level');
 var EC_BLOCKS_TABLE = [
     // L  M  Q  H
@@ -16589,7 +16596,7 @@ var EC_CODEWORDS_TABLE = [
     }
 };
 
-},{"./error-correction-level":"88PX9"}],"6w3fK":[function(require,module,exports) {
+},{"./error-correction-level":"guzO9"}],"0fO5K":[function(require,module,exports) {
 var BufferUtil = require('../utils/buffer');
 var Polynomial = require('./polynomial');
 var Buffer = require('buffer').Buffer;
@@ -16638,7 +16645,7 @@ function ReedSolomonEncoder(degree) {
 };
 module.exports = ReedSolomonEncoder;
 
-},{"../utils/buffer":"6dOfr","./polynomial":"BdQKt","buffer":"8iVrL"}],"BdQKt":[function(require,module,exports) {
+},{"../utils/buffer":"gNyNa","./polynomial":"9gF6O","buffer":"fKNRf"}],"9gF6O":[function(require,module,exports) {
 var BufferUtil = require('../utils/buffer');
 var GF = require('./galois-field');
 /**
@@ -16687,7 +16694,7 @@ var GF = require('./galois-field');
     return poly;
 };
 
-},{"../utils/buffer":"6dOfr","./galois-field":"fUWs2"}],"fUWs2":[function(require,module,exports) {
+},{"../utils/buffer":"gNyNa","./galois-field":"cnXuQ"}],"cnXuQ":[function(require,module,exports) {
 var BufferUtil = require('../utils/buffer');
 var EXP_TABLE = BufferUtil.alloc(512);
 var LOG_TABLE = BufferUtil.alloc(256);
@@ -16738,7 +16745,7 @@ var LOG_TABLE = BufferUtil.alloc(256);
     return EXP_TABLE[LOG_TABLE[x] + LOG_TABLE[y]];
 };
 
-},{"../utils/buffer":"6dOfr"}],"jKMLj":[function(require,module,exports) {
+},{"../utils/buffer":"gNyNa"}],"7PrpE":[function(require,module,exports) {
 var Utils = require('./utils');
 var ECCode = require('./error-correction-code');
 var ECLevel = require('./error-correction-level');
@@ -16850,7 +16857,7 @@ function getBestVersionForMixedData(segments, errorCorrectionLevel) {
     return version << 12 | d;
 };
 
-},{"./utils":"lmGe2","./error-correction-code":"a031V","./error-correction-level":"88PX9","./mode":"1H9ZH","./version-check":"ieJdy","isarray":"3nzcH"}],"1H9ZH":[function(require,module,exports) {
+},{"./utils":"7km2q","./error-correction-code":"9Lt3V","./error-correction-level":"guzO9","./mode":"fgu6Z","./version-check":"757lz","isarray":"2fXUM"}],"fgu6Z":[function(require,module,exports) {
 var VersionCheck = require('./version-check');
 var Regex = require('./regex');
 /**
@@ -17002,7 +17009,7 @@ var Regex = require('./regex');
     }
 };
 
-},{"./version-check":"ieJdy","./regex":"6EWTo"}],"ieJdy":[function(require,module,exports) {
+},{"./version-check":"757lz","./regex":"bD2Hl"}],"757lz":[function(require,module,exports) {
 /**
  * Check if QR Code version is valid
  *
@@ -17012,7 +17019,7 @@ var Regex = require('./regex');
     return !isNaN(version) && version >= 1 && version <= 40;
 };
 
-},{}],"6EWTo":[function(require,module,exports) {
+},{}],"bD2Hl":[function(require,module,exports) {
 var numeric = '[0-9]+';
 var alphanumeric = '[A-Z $%*+\\-./:]+';
 var kanji = "(?:[u3000-u303F]|[u3040-u309F]|[u30A0-u30FF]|[uFF00-uFFEF]|[u4E00-u9FAF]|[u2605-u2606]|[u2190-u2195]|u203B|[u2010u2015u2018u2019u2025u2026u201Cu201Du2225u2260]|[u0391-u0451]|[u00A7u00A8u00B1u00B4u00D7u00F7])+";
@@ -17036,7 +17043,7 @@ exports.testAlphanumeric = function testAlphanumeric(str) {
     return TEST_ALPHANUMERIC.test(str);
 };
 
-},{}],"lDKJ9":[function(require,module,exports) {
+},{}],"eNoyc":[function(require,module,exports) {
 var Utils = require('./utils');
 var G15 = 1335;
 var G15_MASK = 21522;
@@ -17060,7 +17067,7 @@ var G15_BCH = Utils.getBCHDigit(G15);
     return (data << 10 | d) ^ G15_MASK;
 };
 
-},{"./utils":"lmGe2"}],"bLMoL":[function(require,module,exports) {
+},{"./utils":"7km2q"}],"8p6g8":[function(require,module,exports) {
 var Mode = require('./mode');
 var NumericData = require('./numeric-data');
 var AlphanumericData = require('./alphanumeric-data');
@@ -17356,7 +17363,7 @@ var dijkstra = require('dijkstrajs');
     return exports.fromArray(getSegmentsFromString(data, Utils.isKanjiModeEnabled()));
 };
 
-},{"./mode":"1H9ZH","./numeric-data":"bT0DR","./alphanumeric-data":"lv0Ks","./byte-data":"hiAxJ","./kanji-data":"c7G8B","./regex":"6EWTo","./utils":"lmGe2","dijkstrajs":"hyLUt"}],"bT0DR":[function(require,module,exports) {
+},{"./mode":"fgu6Z","./numeric-data":"jpwgW","./alphanumeric-data":"6PUkH","./byte-data":"8RPkX","./kanji-data":"iHR7M","./regex":"bD2Hl","./utils":"7km2q","dijkstrajs":"9meXo"}],"jpwgW":[function(require,module,exports) {
 var Mode = require('./mode');
 function NumericData(data) {
     this.mode = Mode.NUMERIC;
@@ -17391,7 +17398,7 @@ NumericData.prototype.write = function write(bitBuffer) {
 };
 module.exports = NumericData;
 
-},{"./mode":"1H9ZH"}],"lv0Ks":[function(require,module,exports) {
+},{"./mode":"fgu6Z"}],"6PUkH":[function(require,module,exports) {
 var Mode = require('./mode');
 /**
  * Array of characters available in alphanumeric mode
@@ -17479,7 +17486,7 @@ AlphanumericData.prototype.write = function write(bitBuffer) {
 };
 module.exports = AlphanumericData;
 
-},{"./mode":"1H9ZH"}],"hiAxJ":[function(require,module,exports) {
+},{"./mode":"fgu6Z"}],"8RPkX":[function(require,module,exports) {
 var BufferUtil = require('../utils/buffer');
 var Mode = require('./mode');
 function ByteData(data) {
@@ -17500,7 +17507,7 @@ ByteData.prototype.write = function(bitBuffer) {
 };
 module.exports = ByteData;
 
-},{"../utils/buffer":"6dOfr","./mode":"1H9ZH"}],"c7G8B":[function(require,module,exports) {
+},{"../utils/buffer":"gNyNa","./mode":"fgu6Z"}],"iHR7M":[function(require,module,exports) {
 var Mode = require('./mode');
 var Utils = require('./utils');
 function KanjiData(data) {
@@ -17538,7 +17545,7 @@ KanjiData.prototype.write = function(bitBuffer) {
 };
 module.exports = KanjiData;
 
-},{"./mode":"1H9ZH","./utils":"lmGe2"}],"hyLUt":[function(require,module,exports) {
+},{"./mode":"fgu6Z","./utils":"7km2q"}],"9meXo":[function(require,module,exports) {
 'use strict';
 /******************************************************************************
  * Created 2008-08-19.
@@ -17678,7 +17685,7 @@ module.exports = KanjiData;
 // node.js module exports
 if (typeof module !== 'undefined') module.exports = dijkstra;
 
-},{}],"2VHfR":[function(require,module,exports) {
+},{}],"8WFzR":[function(require,module,exports) {
 var Utils = require('./utils');
 function clearCanvas(ctx, canvas, size) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -17728,7 +17735,7 @@ exports.renderToDataURL = function renderToDataURL(qrData, canvas, options) {
     return canvasEl.toDataURL(type, rendererOpts.quality);
 };
 
-},{"./utils":"jOO7G"}],"jOO7G":[function(require,module,exports) {
+},{"./utils":"cm8OG"}],"cm8OG":[function(require,module,exports) {
 function hex2rgba(hex) {
     if (typeof hex === 'number') hex = hex.toString();
     if (typeof hex !== 'string') throw new Error('Color should be defined as hex string');
@@ -17805,7 +17812,7 @@ exports.qrToImageData = function qrToImageData(imgData, qr, opts) {
     }
 };
 
-},{}],"8noPI":[function(require,module,exports) {
+},{}],"4B3mc":[function(require,module,exports) {
 var Utils = require('./utils');
 function getColorAttrib(color, attrib) {
     var alpha = color.a / 255;
@@ -17855,7 +17862,7 @@ exports.render = function render(qrData, options, cb) {
     return svgTag;
 };
 
-},{"./utils":"jOO7G"}],"6ec77":[function(require,module,exports) {
+},{"./utils":"cm8OG"}],"7YpCX":[function(require,module,exports) {
 "use strict";
 var deselectCurrent = require("toggle-selection");
 var clipboardToIE11Formatting = {
@@ -17943,7 +17950,7 @@ function copy(text, options) {
 }
 module.exports = copy;
 
-},{"toggle-selection":"ckRMX"}],"ckRMX":[function(require,module,exports) {
+},{"toggle-selection":"UoVKG"}],"UoVKG":[function(require,module,exports) {
 module.exports = function() {
     var selection = document.getSelection();
     if (!selection.rangeCount) return function() {
@@ -17970,7 +17977,7 @@ module.exports = function() {
     };
 };
 
-},{}],"iHK1n":[function(require,module,exports) {
+},{}],"4tMH8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createElement", ()=>_preact.createElement
@@ -18315,7 +18322,7 @@ exports.default = {
     lazy: L
 };
 
-},{"preact/hooks":"9nn6o","preact":"8Vmkr","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"9nn6o":[function(require,module,exports) {
+},{"preact/hooks":"fxTnf","preact":"8UZ9w","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"fxTnf":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "useState", ()=>m
@@ -18477,7 +18484,7 @@ _preact.options.__r = function(n) {
     }
 };
 
-},{"preact":"8Vmkr","@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"8Vmkr":[function(require,module,exports) {
+},{"preact":"8UZ9w","@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"8UZ9w":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "render", ()=>H
@@ -18791,7 +18798,7 @@ n1 = {
     this.__v && (this.__e = !0, n && this.__h.push(n), g1(this));
 }, m1.prototype.render = d1, u1 = [], i1 = 0, t1 = "function" == typeof Promise ? Promise.prototype.then.bind(Promise.resolve()) : setTimeout, o1 = e1, f1 = 0;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"c7Wrj":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"7wg2n":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -18805,7 +18812,7 @@ tslib_1.__exportStar(require("./routing"), exports);
 tslib_1.__exportStar(require("./types"), exports);
 tslib_1.__exportStar(require("./validators"), exports);
 
-},{"tslib":"jVISA","./constants":"jtXdw","./error":"cbQ8H","./env":"5n7dM","./format":"liJoc","./routing":"647Lg","./types":"9k3Os","./validators":"j5NSH"}],"jVISA":[function(require,module,exports) {
+},{"tslib":"IdfbZ","./constants":"ae4WG","./error":"f9cII","./env":"ijylS","./format":"3aLoe","./routing":"blBHh","./types":"f1XxG","./validators":"65X5M"}],"IdfbZ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "__extends", ()=>__extends
@@ -19232,7 +19239,7 @@ function __classPrivateFieldSet(receiver, state, value, kind, f) {
     return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"iPXTn"}],"jtXdw":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"emMtT"}],"ae4WG":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19282,7 +19289,7 @@ exports.STANDARD_ERROR_MAP = {
     }
 };
 
-},{}],"cbQ8H":[function(require,module,exports) {
+},{}],"f9cII":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19339,7 +19346,7 @@ function validateJsonRpcError(response) {
 }
 exports.validateJsonRpcError = validateJsonRpcError;
 
-},{"./constants":"jtXdw"}],"5n7dM":[function(require,module,exports) {
+},{"./constants":"ae4WG"}],"ijylS":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19350,7 +19357,7 @@ const environment_1 = require("@pedrouid/environment");
 exports.isNodeJs = environment_1.isNode;
 tslib_1.__exportStar(require("@pedrouid/environment"), exports);
 
-},{"tslib":"jVISA","@pedrouid/environment":"jnKEj"}],"jnKEj":[function(require,module,exports) {
+},{"tslib":"IdfbZ","@pedrouid/environment":"fMr81"}],"fMr81":[function(require,module,exports) {
 "use strict";
 var __createBinding = this && this.__createBinding || (Object.create ? function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -19373,7 +19380,7 @@ Object.defineProperty(exports, "__esModule", {
 __exportStar(require("./crypto"), exports);
 __exportStar(require("./env"), exports);
 
-},{"./crypto":"g6TqG","./env":"dUMAl"}],"g6TqG":[function(require,module,exports) {
+},{"./crypto":"kr42o","./env":"9ikho"}],"kr42o":[function(require,module,exports) {
 var global = arguments[3];
 "use strict";
 Object.defineProperty(exports, "__esModule", {
@@ -19395,7 +19402,7 @@ function isBrowserCryptoAvailable() {
 }
 exports.isBrowserCryptoAvailable = isBrowserCryptoAvailable;
 
-},{}],"dUMAl":[function(require,module,exports) {
+},{}],"9ikho":[function(require,module,exports) {
 var process = require("process");
 "use strict";
 Object.defineProperty(exports, "__esModule", {
@@ -19415,7 +19422,7 @@ function isBrowser() {
 }
 exports.isBrowser = isBrowser;
 
-},{"process":"1WSHx"}],"liJoc":[function(require,module,exports) {
+},{"process":"7Gxwq"}],"3aLoe":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19466,7 +19473,7 @@ function formatErrorMessage(error) {
 }
 exports.formatErrorMessage = formatErrorMessage;
 
-},{"./error":"cbQ8H","./constants":"jtXdw"}],"647Lg":[function(require,module,exports) {
+},{"./error":"f9cII","./constants":"ae4WG"}],"blBHh":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19500,7 +19507,7 @@ function isValidTrailingWildcardRoute(route) {
 }
 exports.isValidTrailingWildcardRoute = isValidTrailingWildcardRoute;
 
-},{}],"9k3Os":[function(require,module,exports) {
+},{}],"f1XxG":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19508,7 +19515,7 @@ Object.defineProperty(exports, "__esModule", {
 const tslib_1 = require("tslib");
 tslib_1.__exportStar(require("@json-rpc-tools/types"), exports);
 
-},{"tslib":"jVISA","@json-rpc-tools/types":"kAXDe"}],"kAXDe":[function(require,module,exports) {
+},{"tslib":"IdfbZ","@json-rpc-tools/types":"gZiZ7"}],"gZiZ7":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19523,7 +19530,7 @@ tslib_1.__exportStar(require("./router"), exports);
 tslib_1.__exportStar(require("./schema"), exports);
 tslib_1.__exportStar(require("./validator"), exports);
 
-},{"tslib":"jVISA","./blockchain":"6XIGM","./jsonrpc":"5RG55","./misc":"gmMxM","./multi":"7qbV9","./provider":"6EFgm","./router":"hWIKX","./schema":"gqNkU","./validator":"aA9iD"}],"6XIGM":[function(require,module,exports) {
+},{"tslib":"IdfbZ","./blockchain":"iPqEl","./jsonrpc":"7JU5g","./misc":"3rcSk","./multi":"75yCg","./provider":"9X3sS","./router":"jmPkv","./schema":"gLkRY","./validator":"3z4rh"}],"iPqEl":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19551,7 +19558,7 @@ class IBlockchainProvider extends provider_1.IJsonRpcProvider {
 }
 exports.IBlockchainProvider = IBlockchainProvider;
 
-},{"./misc":"gmMxM","./provider":"6EFgm"}],"gmMxM":[function(require,module,exports) {
+},{"./misc":"3rcSk","./provider":"9X3sS"}],"3rcSk":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19561,7 +19568,7 @@ class IEvents {
 }
 exports.IEvents = IEvents;
 
-},{}],"6EFgm":[function(require,module,exports) {
+},{}],"9X3sS":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19587,13 +19594,13 @@ class IJsonRpcProvider extends IBaseJsonRpcProvider {
 }
 exports.IJsonRpcProvider = IJsonRpcProvider;
 
-},{"./misc":"gmMxM"}],"5RG55":[function(require,module,exports) {
+},{"./misc":"3rcSk"}],"7JU5g":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-},{}],"7qbV9":[function(require,module,exports) {
+},{}],"75yCg":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19608,7 +19615,7 @@ class IMultiServiceProvider extends provider_1.IBaseJsonRpcProvider {
 }
 exports.IMultiServiceProvider = IMultiServiceProvider;
 
-},{"./provider":"6EFgm"}],"hWIKX":[function(require,module,exports) {
+},{"./provider":"9X3sS"}],"jmPkv":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19621,13 +19628,13 @@ class IJsonRpcRouter {
 }
 exports.IJsonRpcRouter = IJsonRpcRouter;
 
-},{}],"gqNkU":[function(require,module,exports) {
+},{}],"gLkRY":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-},{}],"aA9iD":[function(require,module,exports) {
+},{}],"3z4rh":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19640,7 +19647,7 @@ class IJsonRpcValidator {
 }
 exports.IJsonRpcValidator = IJsonRpcValidator;
 
-},{}],"j5NSH":[function(require,module,exports) {
+},{}],"65X5M":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -19671,7 +19678,7 @@ function isJsonRpcValidationInvalid(validation) {
 }
 exports.isJsonRpcValidationInvalid = isJsonRpcValidationInvalid;
 
-},{}],"jMzdH":[function(require,module,exports) {
+},{}],"gDZwT":[function(require,module,exports) {
 var process = require("process");
 !function(t, e) {
     "object" == typeof exports && "object" == typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define([], e) : "object" == typeof exports ? exports.MessagePack = e() : t.MessagePack = e();
@@ -21109,9 +21116,9 @@ var process = require("process");
     ]);
 });
 
-},{"process":"1WSHx"}],"3lKGd":[function(require,module,exports) {
-var global = arguments[3];
+},{"process":"7Gxwq"}],"ejJxN":[function(require,module,exports) {
 var process = require("process");
+var global = arguments[3];
 /*
  * [hi-base32]{@link https://github.com/emn178/hi-base32}
  *
@@ -21458,7 +21465,7 @@ var process = require("process");
     }
 })();
 
-},{"process":"1WSHx"}],"hmEJq":[function(require,module,exports) {
+},{"process":"7Gxwq"}],"78dWT":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -21520,7 +21527,7 @@ class CachedKeyDecoder {
 }
 exports.CachedKeyDecoder = CachedKeyDecoder;
 
-},{"./utils/utf8":"2GKEM"}],"2GKEM":[function(require,module,exports) {
+},{"./utils/utf8":"cpoiq"}],"cpoiq":[function(require,module,exports) {
 var process = require("process");
 "use strict";
 Object.defineProperty(exports, "__esModule", {
@@ -21661,6 +21668,6 @@ function utf8DecodeTD(bytes, inputOffset, byteLength) {
 }
 exports.utf8DecodeTD = utf8DecodeTD;
 
-},{"process":"1WSHx"}]},["7rHbE","htEpl"], "htEpl", "parcelRequire94c2")
+},{"process":"7Gxwq"}],"hYQp9":[function() {},{}]},["fCfyx","3QONC"], "3QONC", "parcelRequire94c2")
 
-//# sourceMappingURL=index.a0da34c2.js.map
+//# sourceMappingURL=index.3169fe7f.js.map
