@@ -474,6 +474,24 @@ var address = "";
 canvas1.addEventListener("mousedown", startDraw, false);
 canvas1.addEventListener("mousemove", continueDraw, false);
 canvas1.addEventListener("mouseup", endDraw, false);
+document.body.addEventListener("touchstart", function(e) {
+    if (e.target == canvas1) {
+        e.preventDefault();
+        startDraw(e);
+    }
+}, false);
+document.body.addEventListener("touchmove", function(e) {
+    if (e.target == canvas1) {
+        e.preventDefault();
+        continueDraw(e);
+    }
+}, true);
+document.body.addEventListener("touchend", function(e) {
+    if (e.target == canvas1) {
+        e.preventDefault();
+        endDraw(e);
+    }
+}, false);
 document.getElementById("bin2String").onclick = ()=>bin2String()
 ;
 document.getElementById("algo").onclick = ()=>{
@@ -488,8 +506,10 @@ document.getElementById("fetch").onclick = ()=>handleFetch(document.getElementBy
 ;
 var context = canvas1.getContext('2d');
 context.lineCap = 'round';
-context.lineWidth = 8;
+context.lineJoin = "round";
+context.lineWidth = 5;
 function startDraw(event) {
+    event.preventDefault();
     if (mode === true) return;
     var pos = mouseXY(canvas1, event);
     drawing = true;
@@ -502,6 +522,7 @@ function startDraw(event) {
     ]);
 }
 function continueDraw(event) {
+    event.preventDefault();
     if (drawing) {
         var pos = mouseXY(canvas1, event);
         context.lineTo(pos.x, pos.y);
@@ -515,10 +536,8 @@ function continueDraw(event) {
     }
 }
 function endDraw(event) {
+    event.preventDefault();
     if (drawing) {
-        var pos = mouseXY(canvas1, event);
-        context.lineTo(pos.x, pos.y);
-        context.stroke();
         drawing = false;
         lines.push(compress(line));
         let L = lines.length;
@@ -528,7 +547,7 @@ function endDraw(event) {
 }
 function compress(array) {
     let newline = [];
-    for(let i = 0; i < array.length; i += 6){
+    for(let i = 0; i < array.length; i += 3){
         let xnew = (array[i][0] / canvas1.width * 254).toFixed();
         let ynew = (array[i][1] / canvas1.height * 254).toFixed();
         newline.push([
@@ -539,10 +558,13 @@ function compress(array) {
     return newline;
 }
 function mouseXY(c, e) {
+    e.preventDefault();
+    let x = e.clientX || e.touches[0].pageX;
+    let y = e.clientY || e.touches[0].pageY;
     var r = c.getBoundingClientRect();
     return {
-        x: e.clientX - r.left,
-        y: e.clientY - r.top
+        x: x - r.left,
+        y: y - r.top
     };
 }
 function preview(linesb) {
@@ -561,8 +583,9 @@ function drawConstructed(array) {
         var point = array[pt];
         ctx2.lineTo(point[0] / 255 * canvas2.width, point[1] / 255 * canvas2.height);
     }
-    ctx2.lineWidth = 8;
+    ctx2.lineWidth = 5;
     ctx2.lineCap = 'round';
+    ctx2.lineJoin = 'round';
     ctx2.stroke();
 }
 function bin2String() {
