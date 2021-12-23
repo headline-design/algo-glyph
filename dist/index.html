@@ -1,29 +1,229 @@
 <html class="dark">
 
-<head>
+<head><link rel="stylesheet" href="/index.710e9678.css">
     <title>Algo Glyph</title>
     <link src="index.css" type="stylesheet">
 </head>
 
-<body style="background-color:black;">
-    <div align="center" style="background-color: black; color: white">
-        <canvas id="canvas1" height="200" width="1016" style="background-color: white; touch-action: none"></canvas>
-        <br><br>
-        <button id="bin2String">Generate Code</button>
-        <br><br>
-        <h2>Unicode Encoded Paths:</h2>
-        <p id="points"></p>
-        <textarea id="code" cols="100" readonly=""></textarea>
-        <br>
-        <button id="algo">Connect</button>
-        <p id="address">
-        </p>Recipient: <input type="text" id="recipient" style="width: 300px">
-        <button id="send">Send</button><br><br>
-        TXID to fetch: <input id="fetchtxid" type="text" style="width: 300px" value="NVP23LKWBITFBKRJSSCTV77GAFD6B56TXC4R3G7MJFR2UXUG743A">
-        <button id="fetch">Fetch & Render</button><br><br>
-        <canvas id="canvas2" height="200" width="1016" style="background-color: white;"></canvas>
+<div class="text-center -mt-40 xl:-mt-3">
+  <div class="flex sm:inline-flex flex-col items-center justify-center lg:inline-grid lg:grid-rows-[auto,auto] lg:grid-cols-[1fr,1fr,1fr] xl:grid-rows-1 xl:grid-cols-[auto,1fr,1fr,1fr] ">
+    <div class="relative z-0 w-full max-w-sm sm:max-w-none lg:col-span-3 xl:col-span-1">
+      <div class="hidden sm:block xl:hidden absolute inset-0 rounded-xl bg-gradient-to-b from-teal-400 via-teal-400 to-transparent opacity-15 filter blur-[52px]"></div>
+      <div class="hidden xl:block absolute inset-x-0 top-5 bottom-11 rounded-xl bg-gradient-to-b from-teal-400 to-indigo-500 opacity-15 filter blur-[52px]"></div>
+
+      <div class="relative bg-gradient-to-b from-teal-400 to-gray-900 sm:to-teal-400/20 xl:to-gray-900 rounded-xl p-px sm:shadow-md">
+        <div class="rounded-xl bg-gray-900 pt-16 pb-10 sm:py-12 xl:pt-16 xl:pb-8">
+          <div class="lg:grid-cols-[auto,1fr] sm:items-center sm:gap-x-10 md:gap-x-24 lg:gap-x-16 xl:flex xl:flex-col px-8 md:px-12 xl:px-14 text-white">
+            <div>
+              <h2 class="font-semibold uppercase tracking-wide text-center mb-2">
+                On-chain Signatures <span class="absolute -top-3 left-0 right-0"><span class="inline-flex bg-teal-400 text-gray-900 uppercase text-[0.688rem] leading-4 tracking-widest py-1 px-2 border-t border-b border-transparent rounded-lg">built by HEADLINE</span></span>
+              </h2>
+
+              <h3 class="sr-only">Price</h3>
+              <div class="text-base font-medium mb-10 sm:mb-8 lg:mb-10">
+                <span class="flex items-center justify-center">
+                  <span class="text-gray-400">Algo</span>
+                  <ins class="text-5xl tracking-tight text-teal-400 font-extrabold no-underline mx-3">AlgoGlyph</ins>
+                  <span>HDL</span>
+                </span>
+                                </div>
+
+                                <p class="flex justify-center">
+                                  <a class="flex items-center bg-gray-800 hover:bg-gray-700 text-gray-200 rounded-full whitespace-nowrap py-1 px-3">
+                                    <span>Ready to write? <span class="text-teal-400 font-medium">Sign below</span></span>
+                                    <svg aria-hidden="true" height="10" fill="none" class=" rotate ml-1.5 flex-none" width="11">
+                                      <path d="M5.593 9.277l4.639-4.638L5.593 0l-.895.89 3.107 3.102H0v1.293h7.805L4.698 8.392l.895.885z" fill="#2dd4bf"></path>
+                                    </svg>
+                                  </a>
+                                </p>
+
+            <div class="mb-8 sm:mb-0 xl:mb-12 flex flex-col items-center sm:block">
+              <h3 class="sr-only">Features</h3>
+              <ul role="list">
+                <li class="flex items-center lg:w-64 xl:w-auto"><p class="mb-2 text-sm leading-6 font-semibold text-gray-400 dark:text-400">Write signature</p></li>
+                
+                <div class="bg-gray-700 rounded-lg px-6 py-8 ring-1 ring-gray-900/5 shadow-xl">
+
+                  
+                
+                
+                  <canvas class="block w-full sm:text-sm bg-gray-700 text-gray-200 rounded-lg placeholder-gray-400 focus:bg-white focus:text-gray-900 focus:outline-none" id="canvas1" style="touch-action: none" height="300" width="700"></canvas>
+                </div>
+                <li class=" li-sb flex items-center lg:w-64 xl:w-auto">
+                  <p class="">Signature field</p>
+                  <p id="points"></p>
+                </li>  
+                     
+
+
+                      
+                      
+                      
+                      
+                      
+                      
+                    
+
+              
+                                 
+                                </ul>
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
     </div>
-</body>
-<script src="/index.a0da34c2.js" defer=""></script>
+
+    <div class="sm:hidden w-full max-w-sm h-0.5 bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-30 mt-6"></div>
+    
+    
+  </div>
+</div>
+    
+    
+  </div>
+
+
+<main class="flex-auto ">
+  <div class="overflow-hidden bg-gray-900 -mt-32 pt-32">
+    <div class="relative z-0 text-center text-gray-300 max-w-2xl px-4 sm:px-3 mx-auto pt-16 sm:pt-24 xl:pt-32 pb-16 sm:pb-24 md:pb-20 xl:pb-28">
+    <h1 class="text-3xl sm:text-5.5xl font-extrabold tracking-tight text-white mb-4">Sign once, use forever</h1>
+    <p class="text-lg max-w-xl mx-auto mb-8">Create a real signature to solidify your digital identity. AlgoGlyph signatures are stored on-chain, forever.</p>
+    <dl class="flex flex-wrap items-center justify-center text-xs font-semibold text-gray-300 tracking-wide uppercase">
+      <dt class="flex-none w-full mb-4">All Dapps includes</dt>
+      <dd class="flex items-center bg-black bg-opacity-50 py-2 pl-5 sm:pl-6 pr-2 sm:pr-3 rounded-l-full">
+        <svg width="29" height="29" viewbox="0 0 256 256" fill="none" class="h-8 flex-none mr-2" xmlns="http://www.w3.org/2000/svg"><circle cx="128" cy="128" r="128" fill="#4B5563"></circle><path d="M182.09 183.16H163.405L151.27 138.02L125.18 183.165H104.32L144.645 113.285L138.155 89.0248L83.7799 183.18H62.9099L131.82 63.8198H150.09L158.09 93.4748H176.94L164.07 115.855L182.09 183.16Z" fill="#cbccd1"></path><defs><filter id="html-logo-filter" x=".25" y="-.899" width="24" height="27" filterunits="userSpaceOnUse" color-interpolation-filters="sRGB"><feflood flood-opacity="0" result="BackgroundImageFix"></feflood><feblend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend><fecolormatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></fecolormatrix><feoffset dy="-1"></feoffset><fegaussianblur stddeviation=".5"></fegaussianblur><fecomposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></fecomposite><fecolormatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"></fecolormatrix><feblend in2="shape" result="effect1_innerShadow"></feblend></filter></defs></svg> Algorand      </dd>
+      <dd class="flex items-center bg-black bg-opacity-50 py-2 px-2 sm:px-3">
+        <svg aria-hidden="true" viewbox="0 0 29 29" width="29" height="29" fill="none" class="h-8 flex-none mr-2"><svg xmlns="http://www.w3.org/2000/svg" class="hdl-asa-icon" viewbox="0 0 256 256" fill="none">
+          <circle cx="128" cy="128" r="128" fill="#4B5563"></circle>
+          <path d="M184.338 67.8871C184.6 64.7736 182.042 62.2324 178.918 62.2324H123.757C120.633 62.2324 118.1 64.7654 118.1 67.8899V120.221C118.1 123.346 115.567 125.879 112.443 125.879H66.0932C61.0385 125.879 58.5209 132.003 62.114 135.558L117.861 190.718C118.92 191.766 120.35 192.354 121.84 192.354H171.019C176.045 192.354 178.576 186.29 175.041 182.718L121.52 128.621C154.763 126.936 181.563 100.831 184.338 67.8871Z" fill="#4B5563"></path>
+          <path d="M77 58C77 56.3431 78.3431 55 80 55H99C100.657 55 102 56.3431 102 58V90C102 93.866 105.134 97 109 97H147C150.866 97 154 93.866 154 90V58C154 56.3431 155.343 55 157 55H176C177.657 55 179 56.3431 179 58V197C179 198.657 177.657 200 176 200H157C155.343 200 154 198.657 154 197V132C154 128.134 150.866 125 147 125H109C105.134 125 102 128.134 102 132V197C102 198.657 100.657 200 99 200H80C78.3431 200 77 198.657 77 197V58Z" fill="#cbccd1"></path>
+          </svg><defs><filter id="react-logo-filter-0" x=".75" y="7.106" width="28" height="13" filterunits="userSpaceOnUse" color-interpolation-filters="sRGB"><feflood flood-opacity="0" result="BackgroundImageFix"></feflood><feblend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend><fecolormatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></fecolormatrix><feoffset dy="-1"></feoffset><fegaussianblur stddeviation=".5"></fegaussianblur><fecomposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></fecomposite><fecolormatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"></fecolormatrix><feblend in2="shape" result="effect1_innerShadow"></feblend></filter><filter id="react-logo-filter-1" x="5.964" y=".575" width="17.572" height="26.047" filterunits="userSpaceOnUse" color-interpolation-filters="sRGB"><feflood flood-opacity="0" result="BackgroundImageFix"></feflood><feblend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend><fecolormatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></fecolormatrix><feoffset dy="-1"></feoffset><fegaussianblur stddeviation=".5"></fegaussianblur><fecomposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></fecomposite><fecolormatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"></fecolormatrix><feblend in2="shape" result="effect1_innerShadow"></feblend></filter><filter id="react-logo-filter-2" x="5.964" y=".576" width="17.572" height="26.047" filterunits="userSpaceOnUse" color-interpolation-filters="sRGB"><feflood flood-opacity="0" result="BackgroundImageFix"></feflood><feblend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend><fecolormatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></fecolormatrix><feoffset dy="-1"></feoffset><fegaussianblur stddeviation=".5"></fegaussianblur><fecomposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></fecomposite><fecolormatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"></fecolormatrix><feblend in2="shape" result="effect1_innerShadow"></feblend></filter></defs></svg>        HEADLINE
+      </dd>
+      <dd class="flex items-center bg-black bg-opacity-50 py-2 pl-2 sm:pl-3 pr-5 sm:pr-6 rounded-r-full">
+         <svg aria-hidden="true" viewbox="0 0 29 29" width="29" height="29" fill="none" class="h-8 flex-none mr-2"><g filter="url(#react-logo-filter-0)"><ellipse cx="14.75" cy="14.106" rx="13.25" ry="5.25" stroke="#4B5563" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></ellipse></g><g filter="url(#react-logo-filter-1)"><ellipse cx="14.75" cy="14.099" rx="13.25" ry="5.25" transform="rotate(-60 14.75 14.1)" stroke="#4B5563" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></ellipse></g><g filter="url(#react-logo-filter-2)"><ellipse cx="14.75" cy="14.1" rx="13.25" ry="5.25" transform="rotate(-120 14.75 14.1)" stroke="#4B5563" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></ellipse></g><circle cx="14.75" cy="14.106" r="2" fill="#1F2937" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></circle><defs><filter id="react-logo-filter-0" x=".75" y="7.106" width="28" height="13" filterunits="userSpaceOnUse" color-interpolation-filters="sRGB"><feflood flood-opacity="0" result="BackgroundImageFix"></feflood><feblend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend><fecolormatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></fecolormatrix><feoffset dy="-1"></feoffset><fegaussianblur stddeviation=".5"></fegaussianblur><fecomposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></fecomposite><fecolormatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"></fecolormatrix><feblend in2="shape" result="effect1_innerShadow"></feblend></filter><filter id="react-logo-filter-1" x="5.964" y=".575" width="17.572" height="26.047" filterunits="userSpaceOnUse" color-interpolation-filters="sRGB"><feflood flood-opacity="0" result="BackgroundImageFix"></feflood><feblend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend><fecolormatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></fecolormatrix><feoffset dy="-1"></feoffset><fegaussianblur stddeviation=".5"></fegaussianblur><fecomposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></fecomposite><fecolormatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"></fecolormatrix><feblend in2="shape" result="effect1_innerShadow"></feblend></filter><filter id="react-logo-filter-2" x="5.964" y=".576" width="17.572" height="26.047" filterunits="userSpaceOnUse" color-interpolation-filters="sRGB"><feflood flood-opacity="0" result="BackgroundImageFix"></feflood><feblend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feblend><fecolormatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></fecolormatrix><feoffset dy="-1"></feoffset><fegaussianblur stddeviation=".5"></fegaussianblur><fecomposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></fecomposite><fecolormatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"></fecolormatrix><feblend in2="shape" result="effect1_innerShadow"></feblend></filter></defs></svg>
+                React
+      </dd>
+    </dl>
+  </div>
+  
+    <div class="text-center xl:-mt-3">
+      <div class="flex sm:inline-flex flex-col items-center justify-center lg:inline-grid lg:grid-rows-[auto,auto] lg:grid-cols-[1fr,1fr,1fr] xl:grid-rows-1 xl:grid-cols-[auto,1fr,1fr,1fr] ">
+        <div class="relative z-0 w-full max-w-sm sm:max-w-none lg:col-span-3 xl:col-span-1">
+          <div class="hidden sm:block xl:hidden absolute inset-0 rounded-xl bg-gradient-to-b from-teal-400 via-teal-400 to-transparent opacity-15 filter blur-[52px]"></div>
+          <div class="hidden xl:block absolute inset-x-0 top-5 bottom-11 rounded-xl bg-gradient-to-b from-teal-400 to-indigo-500 opacity-15 filter blur-[52px]"></div>
+  
+          <div class="relative bg-gradient-to-b from-teal-400 to-gray-900 sm:to-teal-400/20 xl:to-gray-900 rounded-xl p-px sm:shadow-md">
+            <div class="rounded-xl bg-gray-900 pt-16 pb-10 sm:py-12 xl:pt-16 xl:pb-8">
+              <div class="lg:grid-cols-[auto,1fr] sm:items-center sm:gap-x-10 md:gap-x-24 lg:gap-x-16 xl:flex xl:flex-col px-8 md:px-12 xl:px-14 text-white">
+                <div>
+                  <h2 class="font-semibold uppercase tracking-wide text-center mb-2">
+                    Signature encoding <span class="absolute -top-3 left-0 right-0"><span class="inline-flex bg-teal-400 text-gray-900 uppercase text-[0.688rem] leading-4 tracking-widest py-1 px-2 border-t border-b border-transparent rounded-lg">Only on Algorand</span></span>
+                  </h2>
+  
+                  <h3 class="sr-only">Price</h3>
+                  <div class="text-base font-medium mb-10 sm:mb-8 lg:mb-10">
+                    <span class="flex items-center justify-center">
+                      <ins class="text-5xl tracking-tight text-teal-400 font-extrabold no-underline mx-3">Glyph Minter</ins>
+                    </span>
+                                    </div>
+  
+                  
+                </div>
+  
+                <div class="mb-8 sm:mb-0 xl:mb-12 flex flex-col items-center sm:block">
+                  <h3 class="sr-only">Features</h3>
+                  <ul role="list">
+
+                    <body>
+
+                          <br>
+                          <button class="rounded-lg font-semibold p-3 mb-6 block mx-auto text-center w-60 md:w-64 xl:w-60 text-teal-900 hover:bg-teal-300 rounded-lg font-semibold p-3 mb-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 whitespace-nowrap py-3 px-3" id="bin2String">Generate Glyph</button>
+                          <br><br>
+                        <div class="bg-gray-800 rounded-lg px-6 py-8 ring-1 ring-gray-900/5 shadow-xl">
+                          <h2 class="font-semibold uppercase tracking-wide text-center mb-2">UTF8 Encoded Paths:</h2>
+                          <li class="flex items-center lg:w-64 xl:w-auto">
+                            <p id="points"></p>
+                          </li>
+                          <div class="textarea-class">
+                          <textarea class="language-html block w-full px-4 py-3 sm:text-sm bg-gray-700 text-gray-200 rounded-lg placeholder-gray-400 focus:bg-white focus:text-gray-900 focus:outline-none" id="code" cols="100" readonly=""></textarea>
+                        </div>
+                        <br><br>
+                        <li class="flex items-center lg:w-64 xl:w-auto"><svg aria-hidden="true" width="12" height="12" fill="none" class="text-teal-400 mr-3">
+                          <path d="M1.5 4.5l2.236 2.236a1 1 0 001.467-.056L10.5.5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path>
+                        </svg><p class="mb-2 text-sm leading-6 font-semibold text-500 dark:text-400">Verify signature</p></li>
+                        <canvas class="block w-full sm:text-sm bg-gray-700 text-gray-200 rounded-lg placeholder-gray-400 focus:bg-white focus:text-gray-900 focus:outline-none" id="canvas2" width="700"></canvas>
+
+                        </div> 
+
+
+                          <br>
+                          <br>
+                          <button id="algo" class="flex items-center bg-gray-800 hover:bg-gray-700 text-gray-200 rounded-full whitespace-nowrap py-1 px-3">Connect to Algorand<p class="flex justify-center">
+                            <a href="#team-pricing" class="flex items-center  py-1 px-3">
+                              
+                              <svg aria-hidden="true" width="11" height="10" fill="none" class="ml-1.5 flex-none">
+                                <path d="M5.593 9.277l4.639-4.638L5.593 0l-.895.89 3.107 3.102H0v1.293h7.805L4.698 8.392l.895.885z" fill="#2dd4bf"></path>
+                              </svg>
+                            </a>
+                          </p></button>
+                          <br>
+                          <br>
+                          <div class="bg-gray-800 rounded-lg px-6 py-8 ring-1 ring-gray-900/5 shadow-xl">
+                            <h2 class="font-semibold uppercase tracking-wide text-center mb-2">Send Signature</h2>
+                            <li class="flex items-center lg:w-64 xl:w-auto"><p class="mb-2 text-sm leading-6 font-semibold text-gray-400 dark:text-400">
+                              </p><p class="mb-2 text-sm leading-6 font-semibold text-gray-400 dark:text-400">Recipient</p>
+                            </li>
+                            <p id="address">
+                          </p><input class="block w-full px-4 py-3 sm:text-sm bg-gray-700 text-gray-200 rounded-lg placeholder-gray-400 focus:bg-white focus:text-gray-900 focus:outline-none" type="text" id="recipient" style="width: 100%">
+                          <button class="block mx-auto text-center w-60 md:w-64 xl:w-60 bg-teal-400 text-teal-900 hover:bg-teal-300 rounded-lg font-semibold p-3 mb-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900" "="" id="send">Send</button>
+                          <br>
+                          <li class="flex items-center lg:w-64 xl:w-auto"><p class="mb-2 text-sm leading-6 font-semibold text-gray-400 dark:text-400">
+                          </p><p class="mb-2 text-sm leading-6 font-semibold text-gray-400 dark:text-400">TXID to fetch</p>
+                        </li> <input class="block w-full px-4 py-3 sm:text-sm bg-gray-700 text-gray-200 rounded-lg placeholder-gray-400 focus:bg-white focus:text-gray-900 focus:outline-none" id="fetchtxid" type="text" style="width: 100%" value="NVP23LKWBITFBKRJSSCTV77GAFD6B56TXC4R3G7MJFR2UXUG743A">
+                              <br>
+                              <br>
+                              <button id="fetch" class="flex items-center bg-gray-800 hover:bg-gray-700 text-gray-200 rounded-full whitespace-nowrap py-1 px-3">Fetch & Render<p class="flex justify-center">
+                                <a href="#team-pricing" class="flex items-center  py-1 px-3">
+                                  
+                                  <svg aria-hidden="true" width="11" height="10" fill="none" class="ml-1.5 flex-none">
+                                    <path d="M5.593 9.277l4.639-4.638L5.593 0l-.895.89 3.107 3.102H0v1.293h7.805L4.698 8.392l.895.885z" fill="#2dd4bf"></path>
+                                  </svg>
+                                </a>
+                              </p></button>
+                              <br>
+                        <canvas class="block w-full sm:text-sm bg-gray-700 text-gray-200 rounded-lg placeholder-gray-400 focus:bg-white focus:text-gray-900 focus:outline-none" id="canvas3" width="700"></canvas>
+                        
+                        </div>
+
+                  </body>
+                                     
+                                    </ul>
+                </div>
+  
+                
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="sm:hidden w-full max-w-sm h-0.5 bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-30 mt-6"></div>
+  
+        
+  
+        <div class="lg:hidden w-full max-w-sm h-0.5 bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-30"></div>
+  
+        
+  
+        <div class="lg:hidden w-full max-w-sm h-0.5 bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-30"></div>
+  
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+<script src="/index.379dd93c.js" defer=""></script>
 
 </html>

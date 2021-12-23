@@ -1,4 +1,5 @@
 import Pipeline from '@pipeline-ui-2/pipeline'
+import "./index.css"
 
 const wallet = Pipeline.init()
 
@@ -13,6 +14,16 @@ var mode = false
 var drawing = false
 
 var canvas = document.getElementById("canvas1")
+
+function resizeCanvas() {
+  const ratio =  Math.max(window.devicePixelRatio || 1, 1);
+  canvas.width = canvas.offsetWidth * ratio;
+  canvas.height = canvas.offsetHeight * ratio;
+  canvas.getContext("2d").scale(ratio, ratio);
+}
+
+//window.addEventListener("resize", resizeCanvas);
+//resizeCanvas();
 
 var address = ""
 
@@ -43,7 +54,7 @@ document.body.addEventListener("touchstart", function (e) {
 
 
 
-document.getElementById("bin2String").onclick = () => bin2String()
+document.getElementById("bin2String").onclick = () => bin2String("canvas2")
 document.getElementById("algo").onclick = () => {Pipeline.connect(wallet).then(data => {address = data; document.getElementById("address").innerText = address})}
 document.getElementById("send").onclick = () => send()
 document.getElementById("fetch").onclick = () => handleFetch(document.getElementById("fetchtxid").value)
@@ -52,6 +63,7 @@ var context = canvas.getContext('2d')
 context.lineCap = 'round';
 context.lineJoin = "round"
 context.lineWidth = 5;
+context.strokeStyle = "#2dd4bf"
 
 function startDraw(event) {
     event.preventDefault()
@@ -112,33 +124,36 @@ function mouseXY(c, e) {
     return {x: x - r.left, y: y - r.top};
 }
 
-function preview(linesb){
-    let canvas2 = document.getElementById("canvas2")
+function preview(linesb, contextc){
+    let canvas2 = document.getElementById(contextc)
     let ctx2 = canvas2.getContext('2d')
     ctx2.clearRect(0, 0, canvas.width, canvas.height);
     console.log(linesb)
     for(let i=0; i< linesb.length; i++){
-        drawConstructed(linesb[i])
+        drawConstructed(linesb[i],contextc)
     }
 }
 
-function drawConstructed(array){
-    let canvas2 = document.getElementById("canvas2")
+
+
+function drawConstructed(array,contextg){
+    let canvas2 = document.getElementById(contextg)
     let ctx2 = canvas2.getContext('2d')
+    ctx2.lineWidth=5
+    ctx2.lineCap = 'round';
+    ctx2.lineJoin = 'round'
+    ctx2.strokeStyle = "#2dd4bf"
     ctx2.beginPath();
     ctx2.moveTo((array[0][0] / 255) * canvas2.width,(array[0][1] / 255) * canvas2.height);
     for(pt=1;pt<array.length;pt++){
         var point = array[pt];
         ctx2.lineTo((point[0]  / 255) * canvas2.width,(point[1] / 255) * canvas2.height)
     }
-    ctx2.lineWidth=5
-    ctx2.lineCap = 'round';
-    ctx2.lineJoin = 'round'
     ctx2.stroke();
 }
 
-function bin2String() {
-    preview(lines)
+function bin2String(context) {
+    preview(lines,context)
     let canvas = document.getElementById("canvas1")
     let ctx = canvas.getContext('2d')
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -185,7 +200,7 @@ async function fetchNote(txid) {
 function handleFetch(noteTxID) {
     fetchNote(noteTxID).then(response => {
       let datab = base64ToArrayBuffer(response)
-      drawData(datab)
+      drawData(datab,"canvas3")
     })
   }
 
@@ -195,7 +210,7 @@ function handleFetch(noteTxID) {
     return newData;
  }
 
- function drawData(input){
+ function drawData(input,contextx){
      let newlines = []
      let subarray = []
      for (let i = 0; i < input.length; i+=2){
@@ -210,7 +225,7 @@ function handleFetch(noteTxID) {
      }
      newlines.push(subarray)
      console.log(newlines)
-     preview(newlines)
+     preview(newlines,contextx)
  }
 
  function send(){
