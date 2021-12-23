@@ -7,7 +7,7 @@ var lines = []
 
 var line = []
 
-let points = 0
+var points = 0
 
 var mode = false
 
@@ -52,7 +52,7 @@ document.body.addEventListener("touchstart", function (e) {
   }, false);
 
 
-
+var compression = 3
 
 document.getElementById("bin2String").onclick = () => bin2String("canvas2")
 document.getElementById("algo").onclick = () => {Pipeline.connect(wallet).then(data => {address = data; document.getElementById("address").innerText = address})}
@@ -99,14 +99,14 @@ function endDraw(event) {
         drawing = false;
         lines.push(compress(line));
         let L = lines.length
-        points += lines[L -1].length
+        points += lines[L - 1].length
         document.getElementById("points").innerText = "Points: " + points + ",  Bytes: " + (points * 2 + L - 1)
     }
 }
 
 function compress(array){
     let newline = []
-    for (let i =0; i < array.length; i+=3){
+    for (let i =0; i < array.length; i+=compression){
         let xnew = ((array[i][0] / canvas.width) * 254).toFixed()
         let ynew = ((array[i][1] / canvas.height) * 254).toFixed()
         newline.push([(xnew < 255)?xnew:254,(ynew < 255)?ynew:254])
@@ -171,6 +171,7 @@ function bin2String(context) {
     let data = String.fromCharCode.apply(null, lines);
     document.getElementById("code").value = data
     lines = []
+    points = 0
     return data
 }
 
