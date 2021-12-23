@@ -467,7 +467,7 @@ var Buffer = require("buffer").Buffer;
 const wallet = _pipelineDefault.default.init();
 var lines = [];
 var line = [];
-let points = 0;
+var points = 0;
 var mode = false;
 var drawing = false;
 var canvas1 = document.getElementById("canvas1");
@@ -501,6 +501,7 @@ document.body.addEventListener("touchend", function(e) {
         endDraw(e);
     }
 }, false);
+var compression = 3;
 document.getElementById("bin2String").onclick = ()=>bin2String("canvas2")
 ;
 document.getElementById("algo").onclick = ()=>{
@@ -557,7 +558,7 @@ function endDraw(event) {
 }
 function compress(array) {
     let newline = [];
-    for(let i = 0; i < array.length; i += 3){
+    for(let i = 0; i < array.length; i += compression){
         let xnew = (array[i][0] / canvas1.width * 254).toFixed();
         let ynew = (array[i][1] / canvas1.height * 254).toFixed();
         newline.push([
@@ -610,6 +611,7 @@ function bin2String(context) {
     let data = String.fromCharCode.apply(null, lines);
     document.getElementById("code").value = data;
     lines = [];
+    points = 0;
     return data;
 }
 async function fetchNote(txid) {
@@ -11722,8 +11724,8 @@ function parseTransactionData(txData) {
 }
 
 },{"js-sha3":"3PGTq","@walletconnect/encoding":"fFuQM","./encoding":"l6RXr","./misc":"5ZxEb","./validators":"kgoZU","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"3PGTq":[function(require,module,exports) {
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 /**
  * [js-sha3]{@link https://github.com/emn178/js-sha3}
  *
@@ -21121,8 +21123,8 @@ var process = require("process");
 });
 
 },{"process":"lDnB8"}],"loDne":[function(require,module,exports) {
-var global = arguments[3];
 var process = require("process");
+var global = arguments[3];
 /*
  * [hi-base32]{@link https://github.com/emn178/hi-base32}
  *
