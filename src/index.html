@@ -35,7 +35,7 @@
                                       <path d="M5.593 9.277l4.639-4.638L5.593 0l-.895.89 3.107 3.102H0v1.293h7.805L4.698 8.392l.895.885z" fill="#2dd4bf"></path>
                                     </svg>
                                   </a>
-                                </p>
+                                </p> 
 
             <div class="mb-8 sm:mb-0 xl:mb-12 flex flex-col items-center sm:block">
               <ul role="list">
@@ -47,6 +47,9 @@
                 
                 
                   <canvas class="block w-full sm:text-sm bg-gray-700 text-gray-200 rounded-lg placeholder-gray-400 focus:bg-white focus:text-gray-900 focus:outline-none" id="canvas1" style="touch-action: none" height="300" width="700"></canvas>
+                  <button id="clear">Clear</button>
+                  <h3>Compression Level:</h3>
+                  <p id="cvalue"></p><input type="range" id="compress" min="1" max="12" step="1"></input>
                 </div>
                 <li class=" li-sb flex items-center lg:w-64 xl:w-auto">
                   <p class="">Signature field</p>
@@ -129,7 +132,7 @@
   
                   
                 </div>
-  
+                
                 <div class="mb-8 sm:mb-0 xl:mb-12 flex flex-col items-center sm:block">
                   <ul role="list" >
 
@@ -157,6 +160,11 @@
 
                           <br>
                           <br>
+                          <select id="wallets">
+                            <option>WalletConnect</option>
+                            <option>AlgoSigner</option>
+                            <option>myAlgoWallet</option>
+                          </select>
                           <button id="algo" class="flex items-center bg-gray-800 hover:bg-gray-700 text-gray-200 rounded-full whitespace-nowrap py-1 px-3">Connect to Algorand<p class="flex justify-center">
                             <a href="#team-pricing" class="flex items-center  py-1 px-3">
                               
