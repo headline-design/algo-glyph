@@ -2758,9 +2758,9 @@ module.exports = {
 module.exports = require('./dist/belter'); // eslint-disable-line import/no-commonjs
 
 },{"./dist/belter":"gLyac"}],"gLyac":[function(require,module,exports) {
+var global1 = arguments[3];
 var Buffer = require("buffer").Buffer;
 var process = require("process");
-var global1 = arguments[3];
 !function(root, factory) {
     "object" == typeof exports && "object" == typeof module ? module.exports = factory() : "function" == typeof define && define.amd ? define("belter", [], factory) : "object" == typeof exports ? exports.belter = factory() : root.belter = factory();
 }("undefined" != typeof self ? self : this, function() {
@@ -11755,8 +11755,8 @@ function parseTransactionData(txData) {
 }
 
 },{"js-sha3":"3PGTq","@walletconnect/encoding":"fFuQM","./encoding":"l6RXr","./misc":"5ZxEb","./validators":"kgoZU","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"3PGTq":[function(require,module,exports) {
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 /**
  * [js-sha3]{@link https://github.com/emn178/js-sha3}
  *
