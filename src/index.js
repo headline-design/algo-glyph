@@ -41,8 +41,8 @@ function resizeCanvas() {
   context.strokeStyle = "#2dd4bf"
 }
 
-window.addEventListener("resize", resizeCanvas);
-resizeCanvas();
+//window.addEventListener("resize", resizeCanvas);
+//resizeCanvas();
 
 var address = ""
 
@@ -71,20 +71,28 @@ document.body.addEventListener("touchend", function (e) {
 }, false);
 
 
-var compression = 3
+var compression = 2
 
-document.getElementById("wallets").onclick = () => {
-Pipeline.pipeConnector = document.getElementById("wallets").value
-}
+document.getElementById("wallets").onchange = switchConnector
 
 document.getElementById("bin2String").onclick = () => bin2String("canvas2")
 document.getElementById("clear").onclick = () => clear()
 document.getElementById("compress").onchange = () => { compression = parseInt(document.getElementById("compress").value); document.getElementById("cvalue").innerText = String(compression) }
 
-document.getElementById("algo").onclick = () => { Pipeline.connect(wallet).then(data => { address = data; document.getElementById("address").innerText = address }) }
+document.getElementById("algo").onclick = connectWallet
 document.getElementById("send").onclick = () => send()
 document.getElementById("fetch").onclick = () => handleFetch(document.getElementById("fetchtxid").value)
 
+function connectWallet(){
+  Pipeline.connect(wallet).then(
+    data => { address = data; document.getElementById("address").innerText = address })
+}
+
+
+function switchConnector(event) {
+  let connector = event.target.value
+  Object.assign(Pipeline,{pipeConnector: connector })
+}
 function startDraw(event) {
   event.preventDefault()
 
@@ -138,8 +146,8 @@ function mouseXY(c, e) {
   e.preventDefault();
   let vwidth = document.documentElement.clientWidth;
 
-  let x = e.clientX || e.touches[0].pageX
-  let y = e.clientY || e.touches[0].pageY
+  let x = e.clientX || e.touches[0].clientX
+  let y = e.clientY || e.touches[0].clientY
 
   let r = c.getBoundingClientRect();
   //console.log("Bounding: " + r.top)
@@ -150,6 +158,7 @@ function mouseXY(c, e) {
 function preview(linesb, contextc) {
   let canvas2 = document.getElementById(contextc)
   let ctx2 = canvas2.getContext('2d')
+  ctx2.imageSmoothingQuality = "high"
   ctx2.clearRect(0, 0, canvas.width, canvas.height);
   console.log(linesb)
   for (let i = 0; i < linesb.length; i++) {
