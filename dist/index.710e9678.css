@@ -73,4 +73,11 @@ p#points {
     width: unset;
 }
 }
+
+p#address {
+    font-size: 11px;
+    text-align: left;
+    font-weight: 400;
+    padding-bottom: 1rem;
+}
 /*# sourceMappingURL=index.710e9678.css.map */
