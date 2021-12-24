@@ -31,6 +31,24 @@ button#clear {
     max-width: 40rem !important;
 }
 
+@media (max-width: 450px){
+.p-px {
+    padding: 0px;
+}
+}
+
+@media (max-width: 450px){
+.w-full-1 {
+    unset;
+}
+}
+
+@media (min-width: 450px){
+.w-full-1 {
+    100%;
+}
+}
+
 @media (max-width: 640px){
 .sm\:inline-flex {
     display: flex !important;
