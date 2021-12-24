@@ -109,6 +109,14 @@ p#points {
 }
 }
 
+@media (max-width: 420){
+.p-px {
+    padding: 1px;
+    margin: 0px !important;
+    border-width: 0px !important;
+}
+}
+
 
 
 select#wallets {

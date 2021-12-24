@@ -3,6 +3,11 @@ html{color-scheme:dark!important}a.button-border:hover{color:#1f2937}.max-w-sm{m
     cursor: pointer;
     width: 50%;
     margin-top: 1.5rem;
+}p#address {
+    font-size: 11px;
+    text-align: left;
+    font-weight: 400;
+    padding-bottom: 1rem;
 }button#clear {
     border-style: solid;
     border-color: white;
@@ -63,6 +68,12 @@ p.text-gray-400.span-12 {
 p#points {
     font-size: 12px;
 }
+}@media (max-width: 420){
+.p-px {
+    padding: 1px;
+    margin: 0px !important;
+    border-width: 0px !important;
+}
 }select#wallets {
     background-color: #374151;
     border-color: #27bcab;
@@ -74,10 +85,4 @@ p#points {
 }
 }
 
-p#address {
-    font-size: 11px;
-    text-align: left;
-    font-weight: 400;
-    padding-bottom: 1rem;
-}
 /*# sourceMappingURL=index.710e9678.css.map */
