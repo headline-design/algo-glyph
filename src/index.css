@@ -7,10 +7,16 @@ button#bin2String {
     margin-top: 1.5rem;
 }
 
+@media (max-width: 500px){
+    .p-px {
+        margin:unset !important;
+    }
+}
+
 p#address {
     font-size: 11px;
     text-align: left;
-    font-weight: 400;
+    font-weight: 400;   
     padding-bottom: 1rem;
 }
 

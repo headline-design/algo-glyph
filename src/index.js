@@ -15,6 +15,16 @@ var drawing = false
 
 var canvas = document.getElementById("canvas1")
 
+var ol = 0
+var ot = 0
+
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+  ol = 0
+  ot = 0
+  canvas.width = 300
+  canvas.height = 150
+}
+
 var context = canvas.getContext('2d')
 context.lineCap = 'round';
 context.lineJoin = "round"
@@ -43,6 +53,7 @@ function resizeCanvas() {
 
 //window.addEventListener("resize", resizeCanvas);
 //resizeCanvas();
+
 
 var address = ""
 
@@ -144,15 +155,15 @@ function compress(array) {
 
 function mouseXY(c, e) {
   e.preventDefault();
-  let vwidth = document.documentElement.clientWidth;
 
   let x = e.clientX || e.touches[0].clientX
   let y = e.clientY || e.touches[0].clientY
+  console.log(e)
 
   let r = c.getBoundingClientRect();
-  //console.log("Bounding: " + r.top)
+  //alert("Bounding: " + r.top)
   //console.log("x: " + (x - r.left).toFixed() + " y: " + (y - r.top).toFixed())
-  return { x: x - r.left, y: y - r.top };
+  return { x: (x - r.left) + ol, y: (y - r.top) + ot };
 }
 
 function preview(linesb, contextc) {
