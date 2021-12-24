@@ -39,13 +39,13 @@ button#clear {
 
 @media (max-width: 450px){
 .w-full-1 {
-    unset;
+    width: unset;
 }
 }
 
 @media (min-width: 450px){
 .w-full-1 {
-    100%;
+   width: 100%;
 }
 }
 
