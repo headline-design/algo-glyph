@@ -7,6 +7,13 @@ button#bin2String {
     margin-top: 1.5rem;
 }
 
+p#address {
+    font-size: 11px;
+    text-align: left;
+    font-weight: 400;
+    padding-bottom: 1rem;
+}
+
 button#clear {
     border-style: solid;
     border-color: white;
