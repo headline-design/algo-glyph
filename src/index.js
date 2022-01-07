@@ -92,6 +92,7 @@ document.getElementById("compress").onchange = () => { compression = parseInt(do
 
 document.getElementById("algo").onclick = connectWallet
 document.getElementById("send").onclick = () => send()
+document.getElementById("sendasa").onclick = () => mint()
 document.getElementById("fetch").onclick = () => handleFetch(document.getElementById("fetchtxid").value)
 
 function connectWallet(){
@@ -274,6 +275,27 @@ function drawData(input, contextx) {
 
 function send() {
   Pipeline.send(document.getElementById("recipient").value, 0, document.getElementById("code").value, address, wallet, 0)
+    .then(data => {
+      document.getElementById("fetchtxid").value = data
+      console.log(data);
+    });
+}
+
+
+const asaData = {
+  creator:"",
+  note: "Hello",
+  amount: 1,
+  decimals: 0,
+  assetName: ""
+}
+
+function mint() {
+  asaData.creator = address
+  asaData.note = document.getElementById("code").value
+  asaData.assetName = document.getElementById("assetName").value
+  asaData.assetURL = document.getElementById("assetUrl").value
+  Pipeline.createAsa(asaData)
     .then(data => {
       document.getElementById("fetchtxid").value = data
       console.log(data);

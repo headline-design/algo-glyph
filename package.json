@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "@pipeline-ui-2/pipeline": "^1.2.7",
+        "@pipeline-ui-2/pipeline": "^1.2.8",
         "parcel": "^2.0.1",
         "serve": "^13.0.2"
     },
