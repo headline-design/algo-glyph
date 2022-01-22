@@ -490,6 +490,21 @@ function clear() {
     context1.clearRect(0, 0, canvas1.width, canvas1.height);
     document.getElementById("points").innerText = "";
 }
+function undo() {
+    lines.pop();
+    console.log(lines);
+    let canvas2 = document.getElementById("canvas1");
+    let ctx2 = canvas2.getContext('2d');
+    ctx2.imageSmoothingQuality = "high";
+    ctx2.clearRect(0, 0, canvas1.width, canvas1.height);
+    points = 0;
+    document.getElementById("points").innerText = "";
+    for(let i = 0; i < lines.length; i++){
+        points += lines[i].length;
+        drawConstructed(lines[i], "canvas1");
+    }
+    document.getElementById("points").innerText = "Points: " + points + ",  Bytes: " + (points * 2 + (lines.length - 1));
+}
 function resizeCanvas() {
     lines = [];
     points = 0;
@@ -526,6 +541,7 @@ document.body.addEventListener("touchend", function(e) {
         endDraw(e);
     }
 }, false);
+document.getElementById("undo").onclick = undo;
 var compression = 2;
 document.getElementById("wallets").onchange = switchConnector;
 document.getElementById("bin2String").onclick = ()=>bin2String("canvas2")
@@ -17667,8 +17683,8 @@ var process = require("process");
 });
 
 },{"process":"7Gxwq"}],"ejJxN":[function(require,module,exports) {
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 /*
  * [hi-base32]{@link https://github.com/emn178/hi-base32}
  *
@@ -33752,8 +33768,8 @@ Object.defineProperty(Duplex.prototype, 'destroyed', {
 });
 
 },{"process":"7Gxwq","./_stream_readable":"dnBps","./_stream_writable":"kUmFn","inherits":"kP6nK"}],"kUmFn":[function(require,module,exports) {
-var global = arguments[3];
 var process = require("process");
+var global = arguments[3];
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -37998,8 +38014,8 @@ Object.defineProperty(Duplex.prototype, 'destroyed', {
 });
 
 },{"process":"7Gxwq","./_stream_readable":"gjb13","./_stream_writable":"k3RcA","inherits":"kP6nK"}],"k3RcA":[function(require,module,exports) {
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -39608,8 +39624,8 @@ module.exports = function(iterations, keylen) {
 };
 
 },{}],"51rN5":[function(require,module,exports) {
-var global = arguments[3];
 var process = require("process");
+var global = arguments[3];
 var defaultEncoding;
 /* istanbul ignore next */ if (global.process && global.process.browser) defaultEncoding = 'utf-8';
 else if (global.process && global.process.version) {
@@ -47702,8 +47718,8 @@ exports.finished = require('./lib/internal/streams/end-of-stream.js');
 exports.pipeline = require('./lib/internal/streams/pipeline.js');
 
 },{"./lib/_stream_readable.js":"eJaux","./lib/_stream_writable.js":"8SLLn","./lib/_stream_duplex.js":"jbmUq","./lib/_stream_transform.js":"kuWrt","./lib/_stream_passthrough.js":"hoVxo","./lib/internal/streams/end-of-stream.js":"8sVgI","./lib/internal/streams/pipeline.js":"aySwK"}],"eJaux":[function(require,module,exports) {
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -49102,8 +49118,8 @@ Object.defineProperty(Duplex.prototype, 'destroyed', {
 });
 
 },{"process":"7Gxwq","./_stream_readable":"eJaux","./_stream_writable":"8SLLn","inherits":"kP6nK"}],"8SLLn":[function(require,module,exports) {
-var global = arguments[3];
 var process = require("process");
+var global = arguments[3];
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a

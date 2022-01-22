@@ -38,6 +38,22 @@ function clear(){
   document.getElementById("points").innerText = ""
 }
 
+function undo(){
+  lines.pop()
+  console.log(lines)
+  let canvas2 = document.getElementById("canvas1")
+  let ctx2 = canvas2.getContext('2d')
+  ctx2.imageSmoothingQuality = "high"
+  ctx2.clearRect(0, 0, canvas.width, canvas.height);
+  points = 0
+  document.getElementById("points").innerText = ""
+  for (let i = 0; i < lines.length; i++) {
+    points += lines[i].length
+    drawConstructed(lines[i], "canvas1")
+  }
+  document.getElementById("points").innerText = "Points: " + points + ",  Bytes: " + (points * 2 + (lines.length - 1))
+}
+
 function resizeCanvas() {
   lines = []
   points = 0
@@ -80,6 +96,8 @@ document.body.addEventListener("touchend", function (e) {
     endDraw(e)
   }
 }, false);
+
+document.getElementById("undo").onclick = undo
 
 
 var compression = 2
